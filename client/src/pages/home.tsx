@@ -4,8 +4,7 @@ import { useState, useEffect } from "react";
 import { Link } from "wouter";
 
 // Assets
-import heroBg from "@assets/generated_images/abstract_hero_background_with_gradients.png";
-import appMockup from "@assets/generated_images/mobile_app_interface_mockup.png";
+import heroBg from "@assets/generated_images/dark_fluid_organic_blobs_with_rim_lighting.png";
 
 // UI Components
 import { Button } from "@/components/ui/button";
@@ -19,179 +18,162 @@ const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-background/80 backdrop-blur-md py-4 border-b border-white/5" : "bg-transparent py-6"
-      }`}
-    >
-      <div className="container mx-auto px-6 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-gradient-warm flex items-center justify-center">
-            <span className="font-bold text-white">S</span>
+    <>
+      {/* Desktop Navigation Layout */}
+      <header className="fixed top-0 left-0 right-0 z-50 py-6 px-6 md:px-12 hidden md:flex items-center justify-between pointer-events-none">
+        {/* Logo - Floating Left */}
+        <div className={`pointer-events-auto transition-all duration-300 ${scrolled ? "opacity-0 -translate-y-4" : "opacity-100"}`}>
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-lg bg-gradient-warm flex items-center justify-center shadow-[0_0_15px_rgba(255,120,80,0.5)]">
+              <span className="font-bold text-white">S</span>
+            </div>
+            <span className="text-xl font-bold tracking-tight text-white mix-blend-difference">Synctech</span>
           </div>
-          <span className="text-xl font-bold tracking-tight">Synctech</span>
         </div>
 
-        {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
-          <a href="#features" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Features</a>
-          <a href="#solutions" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Solutions</a>
-          <a href="#pricing" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Pricing</a>
-          <a href="#about" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">About</a>
-        </div>
+        {/* Central Floating Pill Nav - Always Visible */}
+        <nav className="pointer-events-auto absolute left-1/2 top-6 -translate-x-1/2">
+          <div className={`
+            flex items-center gap-1 px-2 py-2 rounded-full transition-all duration-500
+            bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.2)]
+            ${scrolled ? "scale-90 translate-y-[-10px] bg-black/40" : "scale-100"}
+          `}>
+             {/* If scrolled, show mini logo inside pill */}
+             <div className={`overflow-hidden transition-all duration-500 ${scrolled ? "w-8 opacity-100 ml-2" : "w-0 opacity-0"}`}>
+                <div className="w-6 h-6 rounded bg-gradient-warm flex items-center justify-center text-[10px] font-bold">S</div>
+             </div>
 
-        <div className="hidden md:flex items-center gap-4">
-          <Button variant="ghost" className="rounded-full hover:bg-white/5">Sign In</Button>
-          <Button className="rounded-full bg-gradient-warm hover:opacity-90 hover:scale-105 transition-all shadow-[0_8px_30px_rgba(255,120,80,0.2)] border-0">
+             <ul className="flex items-center px-4 gap-6 text-sm font-medium text-gray-300">
+               <li><a href="#features" className="hover:text-white transition-colors relative group">
+                 Platform
+                 <span className="absolute -bottom-1 left-0 w-0 h-px bg-gradient-warm transition-all group-hover:w-full"></span>
+               </a></li>
+               <li><a href="#solutions" className="hover:text-white transition-colors relative group">
+                 Solutions
+                 <span className="absolute -bottom-1 left-0 w-0 h-px bg-gradient-warm transition-all group-hover:w-full"></span>
+               </a></li>
+               <li><a href="#pricing" className="hover:text-white transition-colors relative group">
+                 Company
+                 <span className="absolute -bottom-1 left-0 w-0 h-px bg-gradient-warm transition-all group-hover:w-full"></span>
+               </a></li>
+               <li><a href="#about" className="hover:text-white transition-colors relative group">
+                 Support
+                 <span className="absolute -bottom-1 left-0 w-0 h-px bg-gradient-warm transition-all group-hover:w-full"></span>
+               </a></li>
+             </ul>
+
+             <div className={`overflow-hidden transition-all duration-500 ${scrolled ? "w-24 opacity-100 border-l border-white/10 pl-2" : "w-0 opacity-0"}`}>
+               <Button size="sm" className="h-8 rounded-full bg-white text-black hover:bg-gray-200 text-xs font-bold w-full">
+                 Get Started
+               </Button>
+             </div>
+          </div>
+        </nav>
+
+        {/* CTA - Floating Right */}
+        <div className={`pointer-events-auto transition-all duration-300 ${scrolled ? "opacity-0 -translate-y-4" : "opacity-100"}`}>
+          <Button className="rounded-full bg-white text-black hover:bg-gray-200 font-semibold px-6 shadow-[0_0_20px_rgba(255,255,255,0.2)]">
             Get Started
           </Button>
         </div>
+      </header>
 
-        {/* Mobile Toggle */}
+      {/* Mobile Nav */}
+      <div className="md:hidden fixed top-0 left-0 right-0 z-50 p-6 flex justify-between items-center bg-gradient-to-b from-black/80 to-transparent pointer-events-none">
+        <div className="pointer-events-auto flex items-center gap-2">
+           <div className="w-8 h-8 rounded-lg bg-gradient-warm flex items-center justify-center">
+              <span className="font-bold text-white">S</span>
+            </div>
+            <span className="text-xl font-bold tracking-tight">Synctech</span>
+        </div>
         <button 
-          className="md:hidden text-foreground"
+          className="pointer-events-auto text-white w-10 h-10 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-md border border-white/10"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
-          {mobileMenuOpen ? <X /> : <Menu />}
+          {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="absolute top-full left-0 right-0 bg-background border-b border-white/10 p-6 md:hidden flex flex-col gap-4 animate-in slide-in-from-top-5">
-          <a href="#features" className="text-lg font-medium" onClick={() => setMobileMenuOpen(false)}>Features</a>
-          <a href="#solutions" className="text-lg font-medium" onClick={() => setMobileMenuOpen(false)}>Solutions</a>
-          <Button className="w-full rounded-full bg-gradient-warm mt-4">Get Started</Button>
+        <div className="fixed inset-0 z-40 bg-black/95 backdrop-blur-xl flex flex-col justify-center items-center gap-8 md:hidden animate-in fade-in zoom-in-95 duration-300">
+          <a href="#features" className="text-2xl font-medium text-white" onClick={() => setMobileMenuOpen(false)}>Platform</a>
+          <a href="#solutions" className="text-2xl font-medium text-white" onClick={() => setMobileMenuOpen(false)}>Solutions</a>
+          <a href="#company" className="text-2xl font-medium text-white" onClick={() => setMobileMenuOpen(false)}>Company</a>
+          <Button className="rounded-full bg-gradient-warm text-white px-8 py-6 text-lg">Get Started</Button>
         </div>
       )}
-    </nav>
+    </>
   );
 };
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-      {/* Background Blobs/Gradients */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-bl from-primary/20 via-secondary/20 to-transparent rounded-full blur-[100px] opacity-50 animate-float" />
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-secondary/10 via-primary/10 to-transparent rounded-full blur-[80px] opacity-30" />
+    <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <img src={heroBg} alt="Background" className="w-full h-full object-cover opacity-80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-background" />
       </div>
 
-      <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
-        <div className="space-y-8">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm"
-          >
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            <span className="text-xs font-medium tracking-wide uppercase text-muted-foreground">New Version 2.0 Live</span>
-          </motion.div>
-
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-5xl md:text-7xl font-bold leading-[0.95] tracking-tight"
-          >
-            Sync your <br />
-            <span className="text-gradient-warm">Digital Future</span>
-          </motion.h1>
-
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-lg text-muted-foreground max-w-lg leading-relaxed"
-          >
-            Synctech provides the infrastructure for high-scale software development. 
-            Seamlessly integrate, deploy, and scale with our next-gen platform.
-          </motion.p>
-
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-wrap gap-4"
-          >
-            <Button size="lg" className="h-14 px-8 rounded-full bg-gradient-warm hover:opacity-90 transition-all text-lg font-semibold shadow-[0_8px_30px_rgba(255,120,80,0.2)] border-0">
-              Start Building Free
-            </Button>
-            <Button size="lg" variant="outline" className="h-14 px-8 rounded-full border-white/10 hover:bg-white/5 text-lg bg-transparent">
-              Schedule Demo
-            </Button>
-          </motion.div>
-
-          <div className="pt-8 flex items-center gap-4 text-sm text-muted-foreground">
-            <div className="flex -space-x-2">
-              {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="w-8 h-8 rounded-full bg-white/10 border border-background flex items-center justify-center text-[10px]">
-                  <Users size={12} />
-                </div>
-              ))}
-            </div>
-            <p>Trusted by 10,000+ developers</p>
-          </div>
-        </div>
-
-        {/* Right Side Visual */}
+      <div className="container mx-auto px-6 relative z-10 text-center">
         <motion.div 
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="relative hidden lg:block"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="max-w-5xl mx-auto space-y-8"
         >
-           {/* Abstract BG for the phone */}
-           <img 
-             src={heroBg} 
-             alt="Abstract Gradient" 
-             className="absolute inset-0 w-full h-full object-cover rounded-3xl opacity-60 mix-blend-screen" 
-           />
-           
-           {/* Phone Mockup */}
-           <div className="relative z-10 transform rotate-[-6deg] hover:rotate-0 transition-transform duration-700 ease-out">
-             <div className="relative mx-auto border-gray-800 bg-gray-900 border-[8px] rounded-[2.5rem] h-[600px] w-[300px] shadow-2xl flex flex-col overflow-hidden">
-                <div className="h-[32px] w-[3px] bg-gray-800 absolute -start-[17px] top-[72px] rounded-s-lg"></div>
-                <div className="h-[46px] w-[3px] bg-gray-800 absolute -start-[17px] top-[124px] rounded-s-lg"></div>
-                <div className="h-[46px] w-[3px] bg-gray-800 absolute -start-[17px] top-[178px] rounded-s-lg"></div>
-                <div className="h-[64px] w-[3px] bg-gray-800 absolute -end-[17px] top-[142px] rounded-e-lg"></div>
-                <div className="rounded-[2rem] overflow-hidden w-[285px] h-[584px] bg-white dark:bg-gray-800">
-                  <img src={appMockup} className="w-full h-full object-cover" alt="App Screen" />
-                </div>
-             </div>
-             
-             {/* Floating Elements */}
-             <div className="absolute top-20 -right-12 p-4 glass-card rounded-2xl animate-float" style={{ animationDelay: "1s" }}>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center text-green-400">
-                    <BarChart3 size={20} />
-                  </div>
-                  <div>
-                    <p className="text-xs text-muted-foreground">Revenue</p>
-                    <p className="font-bold text-lg">+$12,450</p>
-                  </div>
-                </div>
-             </div>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-4">
+            <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
+            <span className="text-xs font-medium tracking-wide uppercase text-gray-300">+65k startups use Synctech</span>
+          </div>
 
-             <div className="absolute bottom-32 -left-12 p-4 glass-card rounded-2xl animate-float" style={{ animationDelay: "2s" }}>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400">
-                    <Zap size={20} />
-                  </div>
-                  <div>
-                    <p className="text-xs text-muted-foreground">Performance</p>
-                    <p className="font-bold text-lg">99.9%</p>
-                  </div>
+          <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-[0.9]">
+            <span className="block text-transparent bg-clip-text bg-gradient-to-b from-white to-white/50">Protect</span>
+            <span className="block text-transparent bg-clip-text bg-gradient-to-b from-white/90 to-white/30 italic">Your Data</span>
+          </h1>
+
+          <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed font-light">
+            We guard your data with utmost care, empowering you with privacy everywhere.
+            Partnering with security providers to enhance protection.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-8">
+             <div className="flex items-center gap-4 bg-white/5 border border-white/10 backdrop-blur-xl rounded-full p-2 pr-6">
+                <div className="h-10 px-6 rounded-full bg-white/5 flex items-center justify-center text-sm text-gray-400 border border-white/5">
+                  Verify you're human
                 </div>
+                <Button className="rounded-full bg-gradient-to-r from-orange-500 to-pink-500 hover:opacity-90 border-0 px-8 h-10">
+                  Try Demo
+                </Button>
              </div>
-           </div>
+          </div>
+        </motion.div>
+
+        {/* Floating stats similar to reference */}
+        <motion.div 
+           initial={{ opacity: 0 }}
+           animate={{ opacity: 1 }}
+           transition={{ delay: 1, duration: 1 }}
+           className="absolute top-1/4 left-10 hidden lg:block"
+        >
+           <p className="text-4xl font-bold text-white">+1.5b</p>
+           <p className="text-xs text-gray-500 uppercase tracking-widest">GB Data Protected</p>
+        </motion.div>
+
+        <motion.div 
+           initial={{ opacity: 0 }}
+           animate={{ opacity: 1 }}
+           transition={{ delay: 1.2, duration: 1 }}
+           className="absolute bottom-1/3 right-10 hidden lg:block text-right"
+        >
+           <p className="text-4xl font-bold text-white">+300k</p>
+           <p className="text-xs text-gray-500 uppercase tracking-widest">Downloads</p>
         </motion.div>
       </div>
     </section>
@@ -200,33 +182,53 @@ const Hero = () => {
 
 const Features = () => {
   const features = [
-    { title: "Real-time Sync", desc: "Data updates instantly across all connected devices.", icon: Zap },
-    { title: "Bank-grade Security", desc: "End-to-end encryption for all your sensitive data.", icon: Shield },
-    { title: "Team Collaboration", desc: "Work together in real-time with advanced permissions.", icon: Users },
-    { title: "Advanced Analytics", desc: "Gain insights with powerful built-in dashboarding tools.", icon: BarChart3 },
+    { 
+      title: "Proactive Threat Detection", 
+      desc: "Security providers continuously monitor network traffic to identify suspicious patterns.", 
+      icon: Shield,
+      color: "from-blue-500/20 to-purple-500/20"
+    },
+    { 
+      title: "Expertise and Knowledge", 
+      desc: "Gain access to a global network of security experts monitoring your infrastructure 24/7.", 
+      icon: Users,
+      color: "from-orange-500/20 to-red-500/20"
+    },
+    { 
+      title: "Incident Response", 
+      desc: "Rapid automated response systems that neutralize threats before they impact your data.", 
+      icon: Zap,
+      color: "from-green-500/20 to-emerald-500/20"
+    },
   ];
 
   return (
-    <section id="features" className="py-32 relative">
+    <section id="features" className="py-32 relative z-20">
       <div className="container mx-auto px-6">
         <div className="text-center max-w-2xl mx-auto mb-20">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Powering the next generation</h2>
-          <p className="text-muted-foreground">
-            Everything you need to build faster, scale better, and secure your future.
-          </p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Benefits</h2>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-3 gap-8">
           {features.map((f, i) => (
-            <Card key={i} className="glass-card glass-card-hover border-white/5 bg-white/[0.02]">
-              <CardContent className="p-6 space-y-4">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-white/10 to-transparent flex items-center justify-center border border-white/5">
-                  <f.icon className="text-primary" />
+            <div key={i} className="group relative h-[400px] rounded-[2rem] overflow-hidden transition-all duration-500 hover:-translate-y-2">
+              {/* Glass Background */}
+              <div className="absolute inset-0 bg-[#0F1218]/80 backdrop-blur-xl border border-white/5 rounded-[2rem] z-0" />
+              
+              {/* Glowing Blob Effect inside card */}
+              <div className={`absolute -right-20 -top-20 w-64 h-64 rounded-full bg-gradient-to-br ${f.color} blur-[60px] opacity-40 group-hover:opacity-60 transition-opacity duration-500`} />
+              
+              <div className="relative z-10 h-full flex flex-col justify-between p-10">
+                <div>
+                  <h3 className="text-2xl font-bold mb-4 leading-tight">{f.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed opacity-80">{f.desc}</p>
                 </div>
-                <h3 className="text-xl font-semibold">{f.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{f.desc}</p>
-              </CardContent>
-            </Card>
+                
+                <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-white/10 transition-colors">
+                   <f.icon className="text-white/80" size={20} />
+                </div>
+              </div>
+            </div>
           ))}
         </div>
       </div>
