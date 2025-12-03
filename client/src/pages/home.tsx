@@ -16,6 +16,8 @@ import { Textarea } from "@/components/ui/textarea";
 import heroBg from "@assets/generated_images/dark_fluid_organic_blobs_with_rim_lighting.png";
 import logo from "@assets/SyncTech_LOGO_01_White_1764691366645.png";
 
+import react from "@assets/java-4.svg";
+
 // Gallery Images
 import gallery1 from "@assets/WhatsApp_Image_2025-11-03_at_16.28.08_1764691437358.jpeg";
 import gallery2 from "@assets/487705912_2402136696790237_1568879427472810476_n_1764691437360.jpg";
@@ -25,6 +27,18 @@ import gallery5 from "@assets/WhatsApp_Image_2025-11-03_at_16.17.29_176469143736
 
 // Neon Gradient Background
 import neonGradient from "@assets/neon_gradient.png";
+
+// Tech Stack Logos
+import reactLogo from "@assets/react_logo.png";
+import javaLogo from "@assets/java_logo.png";
+import nodejsLogo from "@assets/nodejs_logo.png";
+import typescriptLogo from "@assets/typescript_logo.png";
+import javascriptLogo from "@assets/javascript_logo.png";
+import pythonLogo from "@assets/python_logo.png";
+import dockerLogo from "@assets/docker_logo.png";
+import mongodbLogo from "@assets/mongodb_logo.png";
+import strapiLogo from "@assets/strapi_logo.png";
+import gitlabLogo from "@assets/gitlab_logo.png";
 
 // --- Translation Data ---
 const translations = {
@@ -375,16 +389,17 @@ const Hero = ({ lang }: { lang: Language }) => {
 };
 
 const TechStack = () => {
-  // Using distinct items for the stack to look professional
   const stack = [
-    { name: "Java", color: "#E76F00" },
-    { name: "Python", color: "#3776AB" },
-    { name: "TypeScript", color: "#3178C6" },
-    { name: "Node.js", color: "#339933" },
-    { name: "React", color: "#61DAFB" },
-    { name: "Azure", color: "#0078D4" },
-    { name: "Docker", color: "#2496ED" },
-    { name: "PostgreSQL", color: "#336791" },
+    { name: "React", img: reactLogo },
+    { name: "Java", img: javaLogo },
+    { name: "Node.js", img: nodejsLogo },
+    { name: "TypeScript", img: typescriptLogo },
+    { name: "JavaScript", img: javascriptLogo },
+    { name: "Python", img: pythonLogo },
+    { name: "Docker", img: dockerLogo },
+    { name: "MongoDB", img: mongodbLogo },
+    { name: "Strapi", img: strapiLogo },
+    { name: "RabbitMQ", img: gitlabLogo },
   ];
 
   return (
@@ -394,18 +409,23 @@ const TechStack = () => {
       <div className="flex gap-16 animate-marquee whitespace-nowrap items-center">
         {[...stack, ...stack, ...stack, ...stack].map((tech, i) => (
           <div key={i} className="flex items-center gap-3 group cursor-default">
-            {/* Tech "Logo" using stylized text/icon placeholder style since we want vector look */}
+
+            {/* LOGO COM IMAGEM */}
             <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-white/10 transition-colors shadow-lg">
-              <span className="text-lg font-bold" style={{ color: tech.color }}>
-                {tech.name.substring(0, 2).toUpperCase()}
-              </span>
+              <img
+                src={tech.img}
+                alt={tech.name}
+                className="w-8 h-8 object-contain"
+              />
             </div>
+
             <span className="text-xl font-bold text-white/40 group-hover:text-white/90 transition-colors">
               {tech.name}
             </span>
           </div>
         ))}
       </div>
+
 
       <style>{`
         @keyframes marquee {
@@ -614,23 +634,121 @@ const AIChat = ({ lang }: { lang: Language }) => {
 
     const userMsg = { role: "user", content: input };
     setMessages(prev => [...prev, userMsg]);
+    const currentInput = input;
     setInput("");
     setIsTyping(true);
 
-    // Enhanced Mock Response Logic
+    // Comprehensive Knowledge Base System
     setTimeout(() => {
-      let response = lang === 'en' ? "Interesting! I can connect you with one of our specialists to discuss this in detail." : "Interessante! Posso conectar você a um de nossos especialistas para discutir isso em detalhes.";
-      const lowerInput = input.toLowerCase();
+      let response = "";
+      const lowerInput = currentInput.toLowerCase();
 
-      if (lowerInput.includes("preço") || lowerInput.includes("orçamento") || lowerInput.includes("price") || lowerInput.includes("quote")) {
+      // Knowledge Base - Detailed Responses
+      const knowledgeBase = lang === 'en' ? {
+        // Services
+        mobile: {
+          keywords: ["mobile", "app", "ios", "android", "flutter", "react native", "aplicativo", "aplicação móvel"],
+          response: `📱 **Mobile App Development**\n\nWe create native and cross-platform mobile applications:\n\n✓ **Platforms**: iOS, Android, Cross-platform\n✓ **Technologies**: React Native, Flutter, Native (Swift/Kotlin)\n✓ **Features**: Push notifications, offline mode, real-time sync, payment integration\n✓ **Timeline**: 2-6 months depending on complexity\n✓ **Post-launch**: Continuous support and updates\n\nWould you like to discuss your mobile app idea?`
+        },
+        web: {
+          keywords: ["web", "website", "webapp", "site", "portal", "landing", "e-commerce", "loja"],
+          response: `🌐 **Web Development**\n\nWe build modern, scalable web applications:\n\n✓ **Types**: Corporate websites, web apps, e-commerce, dashboards\n✓ **Technologies**: React, Next.js, Node.js, TypeScript\n✓ **Features**: SEO optimization, responsive design, PWA, CMS integration\n✓ **Performance**: Fast loading, secure, scalable architecture\n✓ **Timeline**: 1-4 months\n\nLet's create your digital presence!`
+        },
+        infrastructure: {
+          keywords: ["infrastructure", "infraestrutura", "cloud", "server", "servidor", "hosting", "deploy", "devops", "kubernetes"],
+          response: `☁️ **IT Infrastructure & Cloud**\n\nComplete infrastructure solutions:\n\n✓ **Cloud Services**: AWS, Azure, Google Cloud setup and management\n✓ **DevOps**: CI/CD pipelines, automated deployments\n✓ **Containers**: Docker, Kubernetes orchestration\n✓ **Monitoring**: 24/7 system monitoring and alerts\n✓ **Security**: Firewall, SSL, backup strategies\n✓ **Support**: Technical support and maintenance\n\nNeed help with your infrastructure?`
+        },
+        consulting: {
+          keywords: ["consulting", "consultoria", "advice", "help", "ajuda", "recommendation", "recomendação"],
+          response: `💡 **IT Consulting**\n\nExpert guidance for your technology needs:\n\n✓ **Technology Assessment**: Evaluate current systems\n✓ **Digital Transformation**: Modernize your processes\n✓ **Architecture Design**: Scalable solutions planning\n✓ **Team Training**: Upskill your developers\n✓ **Best Practices**: Industry standards implementation\n\nLet's discuss your challenges!`
+        },
+        // Technologies
+        stack: {
+          keywords: ["technology", "tech", "stack", "tecnologia", "tools", "ferramentas", "languages", "linguagens"],
+          response: `⚡ **Our Technology Stack**\n\n**Frontend**:\n• React, TypeScript, JavaScript\n• Modern UI frameworks and libraries\n\n**Backend**:\n• Node.js, Java, Python\n• RESTful APIs, GraphQL\n\n**Databases**:\n• MongoDB, PostgreSQL, MySQL\n\n**DevOps & Tools**:\n• Docker, GitLab CI/CD\n• Strapi CMS\n\nWe choose the best tech for each project!`
+        },
+        // Pricing
+        pricing: {
+          keywords: ["price", "cost", "quanto custa", "valor", "preço", "orçamento", "budget", "payment", "pagamento"],
+          response: `💰 **Pricing & Budget**\n\nOur prices are tailored to your needs:\n\n📊 **Project Ranges**:\n• Simple Landing Page: Starting from consultation\n• Mobile App (MVP): Contact for quote\n• Full Web Application: Custom pricing\n• Infrastructure Setup: Monthly plans available\n\n💡 **Factors**:\n✓ Project complexity\n✓ Timeline requirements\n✓ Features and integrations\n✓ Ongoing support needs\n\n**Click 'Get a Quote' above for a detailed proposal!**`
+        },
+        // Timeline
+        timeline: {
+          keywords: ["how long", "quanto tempo", "timeline", "prazo", "duration", "duração", "when", "quando"],
+          response: `⏱️ **Project Timeline**\n\n**Typical Durations**:\n• Landing Page: 1-2 weeks\n• Corporate Website: 3-6 weeks\n• Mobile App (MVP): 2-3 months\n• Full Web Application: 3-6 months\n• Custom Enterprise Solution: 6+ months\n\n**Our Process**:\n1️⃣ Discovery & Planning (1 week)\n2️⃣ Design & Prototyping (1-2 weeks)\n3️⃣ Development & Testing (varies)\n4️⃣ Deployment & Training (1 week)\n\nTimelines can be adjusted to your needs!`
+        },
+        // Support
+        support: {
+          keywords: ["support", "suporte", "maintenance", "manutenção", "update", "atualização", "help", "after"],
+          response: `🛠️ **Support & Maintenance**\n\n**Post-Launch Services**:\n✓ Bug fixes and technical support\n✓ Regular updates and improvements\n✓ Security patches\n✓ Performance optimization\n✓ Feature additions\n\n**Support Plans**:\n• Basic: Bug fixes (Mon-Fri)\n• Professional: + Updates (24/5)\n• Enterprise: + Priority support (24/7)\n\n**We don't just build it, we maintain it!**`
+        },
+        // Location & Contact
+        location: {
+          keywords: ["where", "onde", "location", "localização", "address", "endereço", "huila", "angola"],
+          response: `📍 **Synctech Location**\n\nBased in Huila, Angola 🇦🇴\n\n**Contact Us**:\n📞 Phone: +244 946 808 054\n📧 Email: contacto@synctech.ao\n💬 WhatsApp: Available via 'Get Quote' button\n\n**Working Hours**:\nMon-Fri: 8:00 AM - 6:00 PM WAT\n\nWe're here to help!`
+        }
+      } : {
+        // Portuguese Knowledge Base
+        mobile: {
+          keywords: ["mobile", "app", "ios", "android", "flutter", "react native", "aplicativo", "aplicação móvel"],
+          response: `📱 **Desenvolvimento de Apps Mobile**\n\nCriamos aplicações móveis nativas e multiplataforma:\n\n✓ **Plataformas**: iOS, Android, Cross-platform\n✓ **Tecnologias**: React Native, Flutter, Native (Swift/Kotlin)\n✓ **Recursos**: Notificações push, modo offline, sync em tempo real, integração de pagamentos\n✓ **Prazo**: 2-6 meses dependendo da complexidade\n✓ **Pós-lançamento**: Suporte contínuo e atualizações\n\nGostaria de discutir a sua ideia de app?`
+        },
+        web: {
+          keywords: ["web", "website", "webapp", "site", "portal", "landing", "e-commerce", "loja"],
+          response: `🌐 **Desenvolvimento Web**\n\nConstruímos aplicações web modernas e escaláveis:\n\n✓ **Tipos**: Sites corporativos, web apps, e-commerce, dashboards\n✓ **Tecnologias**: React, Next.js, Node.js, TypeScript\n✓ **Recursos**: Otimização SEO, design responsivo, PWA, integração CMS\n✓ **Performance**: Carregamento rápido, seguro, arquitetura escalável\n✓ **Prazo**: 1-4 meses\n\nVamos criar a sua presença digital!`
+        },
+        infrastructure: {
+          keywords: ["infrastructure", "infraestrutura", "cloud", "server", "servidor", "hosting", "deploy", "devops", "kubernetes"],
+          response: `☁️ **Infraestrutura de TI & Cloud**\n\nSoluções completas de infraestrutura:\n\n✓ **Serviços Cloud**: Setup e gestão AWS, Azure, Google Cloud\n✓ **DevOps**: Pipelines CI/CD, deployments automatizados\n✓ **Containers**: Orquestração Docker, Kubernetes\n✓ **Monitoramento**: 24/7 monitoring e alertas\n✓ **Segurança**: Firewall, SSL, estratégias de backup\n✓ **Suporte**: Suporte técnico e manutenção\n\nPrecisa de ajuda com infraestrutura?`
+        },
+        consulting: {
+          keywords: ["consulting", "consultoria", "advice", "help", "ajuda", "recommendation", "recomendação"],
+          response: `💡 **Consultoria em TI**\n\nOrientação especializada para suas necessidades tecnológicas:\n\n✓ **Avaliação Tecnológica**: Avaliar sistemas atuais\n✓ **Transformação Digital**: Modernizar processos\n✓ **Design de Arquitetura**: Planejamento de soluções escaláveis\n✓ **Formação de Equipes**: Capacitação de desenvolvedores\n✓ **Melhores Práticas**: Implementação de padrões da indústria\n\nVamos discutir seus desafios!`
+        },
+        stack: {
+          keywords: ["technology", "tech", "stack", "tecnologia", "tools", "ferramentas", "languages", "linguagens"],
+          response: `⚡ **Nossa Stack Tecnológica**\n\n**Frontend**:\n• React, TypeScript, JavaScript\n• Frameworks e bibliotecas modernas\n\n**Backend**:\n• Node.js, Java, Python\n• APIs RESTful, GraphQL\n\n**Bases de Dados**:\n• MongoDB, PostgreSQL, MySQL\n\n**DevOps & Ferramentas**:\n• Docker, GitLab CI/CD\n• Strapi CMS\n\nEscolhemos a melhor tech para cada projeto!`
+        },
+        pricing: {
+          keywords: ["price", "cost", "quanto custa", "valor", "preço", "orçamento", "budget", "payment", "pagamento"],
+          response: `💰 **Preços & Orçamento**\n\nNossos preços são adaptados às suas necessidades:\n\n📊 **Faixas de Projeto**:\n• Landing Page Simples: A partir de consulta\n• App Mobile (MVP): Contacte para orçamento\n• Aplicação Web Completa: Preço personalizado\n• Setup de Infraestrutura: Planos mensais disponíveis\n\n💡 **Fatores**:\n✓ Complexidade do projeto\n✓ Requisitos de prazo\n✓ Recursos e integrações\n✓ Necessidades de suporte contínuo\n\n**Clique 'Solicitar Orçamento' acima para proposta detalhada!**`
+        },
+        timeline: {
+          keywords: ["how long", "quanto tempo", "timeline", "prazo", "duration", "duração", "when", "quando"],
+          response: `⏱️ **Prazos de Projeto**\n\n**Durações Típicas**:\n• Landing Page: 1-2 semanas\n• Site Corporativo: 3-6 semanas\n• App Mobile (MVP): 2-3 meses\n• Aplicação Web Completa: 3-6 meses\n• Solução Enterprise Personalizada: 6+ meses\n\n**Nosso Processo**:\n1️⃣ Descoberta & Planejamento (1 semana)\n2️⃣ Design & Prototipagem (1-2 semanas)\n3️⃣ Desenvolvimento & Testes (varia)\n4️⃣ Deploy & Formação (1 semana)\n\nPrazos podem ser ajustados às suas necessidades!`
+        },
+        support: {
+          keywords: ["support", "suporte", "maintenance", "manutenção", "update", "atualização", "help", "after"],
+          response: `🛠️ **Suporte & Manutenção**\n\n**Serviços Pós-Lançamento**:\n✓ Correção de bugs e suporte técnico\n✓ Atualizações regulares e melhorias\n✓ Patches de segurança\n✓ Otimização de performance\n✓ Adição de novos recursos\n\n**Planos de Suporte**:\n• Básico: Correção de bugs (Seg-Sex)\n• Profissional: + Atualizações (24/5)\n• Enterprise: + Suporte prioritário (24/7)\n\n**Não apenas construímos, mantemos!**`
+        },
+        location: {
+          keywords: ["where", "onde", "location", "localização", "address", "endereço", "huila", "angola"],
+          response: `📍 **Localização da Synctech**\n\nSediados na Huíla, Angola 🇦🇴\n\n**Contacte-nos**:\n📞 Telefone: +244 946 808 054\n📧 Email: contacto@synctech.ao\n💬 WhatsApp: Disponível via botão 'Solicitar Orçamento'\n\n**Horário de Trabalho**:\nSeg-Sex: 8:00 - 18:00 WAT\n\nEstamos aqui para ajudar!`
+        }
+      };
+
+      // Multi-topic detection
+      let matchedTopics = [];
+      for (const [topic, data] of Object.entries(knowledgeBase)) {
+        if (data.keywords.some(keyword => lowerInput.includes(keyword))) {
+          matchedTopics.push(data.response);
+        }
+      }
+
+      // Generate response
+      if (matchedTopics.length > 0) {
+        // If multiple topics matched, combine them
+        response = matchedTopics.join("\n\n---\n\n");
+      } else {
+        // Default fallback for unrecognized queries
         response = lang === 'en' ?
-          "Prices vary according to complexity. Simple projects start on request, but for an exact value, please use the 'Get a Quote' button above. We analyze each case individually." :
-          "Os valores variam conforme a complexidade. Projetos simples começam sob consulta, mas para um valor exato, por favor use o botão 'Solicitar Orçamento' acima. Analisamos cada caso individualmente.";
+          `I'd be happy to help! I can provide detailed information about:\n\n📱 Mobile App Development\n🌐 Web Development\n☁️ IT Infrastructure & Cloud\n💡 IT Consulting\n⚡ Our Technology Stack\n💰 Pricing & Budget\n⏱️ Project Timelines\n🛠️ Support & Maintenance\n📍 Location & Contact\n\nWhat would you like to know more about?` :
+          `Terei prazer em ajudar! Posso fornecer informações detalhadas sobre:\n\n📱 Desenvolvimento de Apps Mobile\n🌐 Desenvolvimento Web\n☁️ Infraestrutura de TI & Cloud\n💡 Consultoria em TI\n⚡ Nossa Stack Tecnológica\n💰 Preços & Orçamento\n⏱️ Prazos de Projeto\n🛠️ Suporte & Manutenção\n📍 Localização & Contacto\n\nSobre o que gostaria de saber mais?`;
       }
 
       setMessages(prev => [...prev, { role: "ai", content: response }]);
       setIsTyping(false);
-    }, 1200);
+    }, 1500);
   };
 
   return (
@@ -641,9 +759,7 @@ const AIChat = ({ lang }: { lang: Language }) => {
 
       <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center relative z-10">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 text-xs font-bold mb-6">
-            <Zap size={12} /> {t.powered}
-          </div>
+
           <h2 className="text-4xl font-bold mb-6 whitespace-pre-line">{t.title}</h2>
           <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
             {t.desc}
@@ -674,7 +790,7 @@ const AIChat = ({ lang }: { lang: Language }) => {
               </div>
               <div>
                 <div className="font-bold text-sm">{t.assistantName}</div>
-                <div className="text-xs text-purple-300/80">Gemini 2.5 Model</div>
+                <div className="text-xs text-purple-300/80">Online</div>
               </div>
             </div>
             <div className="p-2 hover:bg-white/5 rounded-full cursor-pointer">
@@ -770,7 +886,7 @@ const Footer = () => {
 
         <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
           <p>&copy; 2025 Synctech. Todos os direitos reservados.</p>
-          <p className="text-xs">Feito com ❤️ em Luanda</p>
+          <p className="text-xs">Feito com ❤️ Huila</p>
         </div>
       </div>
     </footer>
