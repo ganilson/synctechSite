@@ -9,6 +9,7 @@ import { Footer } from "@/components/sections/Footer";
 import { AIChat } from "@/components/sections/AIChat";
 import { Calendar, Clock, User, Share2, Code, ChevronRight, Zap, X, Linkedin, Twitter, MessageCircle, Copy, Check, ArrowRight } from "lucide-react";
 import blogData from "@/lib/blog.json";
+import { translations } from "@/lib/translations";
 
 interface BlogPostProps {
     lang: Language;
@@ -16,6 +17,7 @@ interface BlogPostProps {
 }
 
 export default function BlogPost({ lang, setLang }: BlogPostProps) {
+    const t = translations[lang].blogPost;
     const { slug } = useParams();
     const [_, setLocation] = useLocation();
     const [shareModalOpen, setShareModalOpen] = useState(false);
@@ -29,7 +31,7 @@ export default function BlogPost({ lang, setLang }: BlogPostProps) {
     const relatedPosts = blogData.filter(p => p.slug !== slug).slice(0, 2);
 
     useSEO({
-        title: post?.seo.title || post?.title || "Artigo",
+        title: post?.seo.title || post?.title || (lang === 'en' ? "Article" : "Artigo"),
         description: post?.seo.description || post?.excerpt || "",
         keywords: post?.seo.keywords,
         image: post?.image,
@@ -51,13 +53,13 @@ export default function BlogPost({ lang, setLang }: BlogPostProps) {
     if (!post) {
         return (
             <div className="min-h-screen bg-background flex flex-col items-center justify-center p-6 text-center">
-                <h1 className="text-3xl font-bold mb-4">Artigo não encontrado</h1>
-                <p className="text-gray-400 mb-8 max-w-sm">O artigo que procura pode ter sido removido ou o link está incorreto.</p>
+                <h1 className="text-3xl font-bold mb-4">{t.notFound}</h1>
+                <p className="text-gray-400 mb-8 max-w-sm">{t.notFoundDesc}</p>
                 <button
                     onClick={() => setLocation("/blog")}
                     className="px-6 py-2.5 bg-primary text-white rounded-full font-bold text-sm"
                 >
-                    Voltar ao Blog
+                    {t.backToBlog}
                 </button>
             </div>
         );
@@ -91,7 +93,7 @@ export default function BlogPost({ lang, setLang }: BlogPostProps) {
                         <aside className="w-full lg:w-[18%] order-2 lg:order-1">
                             <div className="sticky top-28 space-y-8 p-5 rounded-[2rem] bg-zinc-900/40 border border-white/5 backdrop-blur-md">
                                 <div>
-                                    <h4 className="text-[9px] font-black uppercase tracking-[0.3em] text-primary mb-4">Autor</h4>
+                                    <h4 className="text-[9px] font-black uppercase tracking-[0.3em] text-primary mb-4">{t.author}</h4>
                                     <div className="flex items-center gap-2.5">
                                         <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-primary to-blue-500 p-[1px]">
                                             <div className="w-full h-full rounded-full bg-black flex items-center justify-center overflow-hidden">
@@ -100,13 +102,13 @@ export default function BlogPost({ lang, setLang }: BlogPostProps) {
                                         </div>
                                         <div>
                                             <p className="text-xs font-bold text-white leading-tight">{post.author}</p>
-                                            <p className="text-[9px] text-gray-500 uppercase font-medium">{post.author === "Ganilson Garcia" ? "Founder & CEO" : "Core Team"}</p>
+                                            <p className="text-[9px] text-gray-500 uppercase font-medium">{post.author === "Ganilson Garcia" ? "Founder & CEO" : t.coreTeam}</p>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div className="border-t border-white/5 pt-6">
-                                    <h4 className="text-[9px] font-black uppercase tracking-[0.3em] text-primary mb-4">Detalhes</h4>
+                                    <h4 className="text-[9px] font-black uppercase tracking-[0.3em] text-primary mb-4">{t.details}</h4>
                                     <ul className="space-y-3 text-[11px] font-medium text-gray-400">
                                         <li className="flex items-center gap-2.5">
                                             <Calendar size={12} className="text-primary/50" />
@@ -120,7 +122,7 @@ export default function BlogPost({ lang, setLang }: BlogPostProps) {
                                 </div>
 
                                 <div className="border-t border-white/5 pt-6">
-                                    <h4 className="text-[9px] font-black uppercase tracking-[0.3em] text-primary mb-4">Tags</h4>
+                                    <h4 className="text-[9px] font-black uppercase tracking-[0.3em] text-primary mb-4">{t.tags}</h4>
                                     <div className="flex flex-wrap gap-1.5">
                                         {post.tags?.map((tag: string) => (
                                             <span key={tag} className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-[9px] font-bold text-gray-400 hover:border-primary/50 transition-colors cursor-default">
@@ -136,7 +138,7 @@ export default function BlogPost({ lang, setLang }: BlogPostProps) {
                                         className="flex items-center justify-center gap-2 text-[10px] font-black uppercase tracking-widest text-primary hover:text-white transition-all group w-full p-3 rounded-xl border border-primary/20 bg-primary/5 hover:bg-primary shadow-lg"
                                     >
                                         <Share2 size={12} className="group-hover:scale-110 transition-transform" />
-                                        Partilhar
+                                        {t.share}
                                     </button>
                                 </div>
                             </div>
@@ -203,7 +205,7 @@ export default function BlogPost({ lang, setLang }: BlogPostProps) {
 
                             {/* Related Posts Section - NEW TECHNICAL ADDITION */}
                             <div className="mt-16 pt-16 border-t border-white/5">
-                                <h4 className="text-lg font-black mb-10 tracking-tight uppercase tracking-[0.2em] text-center lg:text-left">Artigos Relacionados</h4>
+                                <h4 className="text-lg font-black mb-10 tracking-tight uppercase tracking-[0.2em] text-center lg:text-left">{t.relatedPosts}</h4>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     {relatedPosts.map((relatedPost) => (
                                         <button
@@ -237,13 +239,13 @@ export default function BlogPost({ lang, setLang }: BlogPostProps) {
                                         <div className="w-12 h-12 rounded-[1rem] bg-primary/20 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
                                             <Code className="text-primary" size={24} />
                                         </div>
-                                        <h4 className="text-base font-black mb-3 leading-tight tracking-tight">Software de Elite</h4>
-                                        <p className="text-[9px] text-gray-500 mb-6 uppercase font-black tracking-widest leading-relaxed">Luanda & Mundo.</p>
+                                        <h4 className="text-base font-black mb-3 leading-tight tracking-tight">{t.banners.elite.title}</h4>
+                                        <p className="text-[9px] text-gray-500 mb-6 uppercase font-black tracking-widest leading-relaxed">{t.banners.elite.subtitle}</p>
                                         <button
                                             onClick={() => window.open("https://wa.me/244946808054")}
                                             className="w-full py-3 bg-primary text-white rounded-xl font-black text-[9px] tracking-[0.2em] uppercase hover:bg-white hover:text-black transition-all shadow-md"
                                         >
-                                            Consultoria
+                                            {t.banners.elite.cta}
                                         </button>
                                     </div>
                                 </div>
@@ -253,13 +255,13 @@ export default function BlogPost({ lang, setLang }: BlogPostProps) {
                                         <div className="w-12 h-12 rounded-[1rem] bg-white/5 flex items-center justify-center mx-auto mb-4 group-hover:scale-95 transition-transform">
                                             <Zap className="text-warm-accent" size={24} />
                                         </div>
-                                        <h4 className="text-base font-black mb-3 leading-tight tracking-tight">Escala & Dev</h4>
-                                        <p className="text-[9px] text-gray-500 mb-6 uppercase font-black tracking-widest leading-relaxed">Performance Máxima.</p>
+                                        <h4 className="text-base font-black mb-3 leading-tight tracking-tight">{t.banners.scale.title}</h4>
+                                        <p className="text-[9px] text-gray-500 mb-6 uppercase font-black tracking-widest leading-relaxed">{t.banners.scale.subtitle}</p>
                                         <button
                                             onClick={() => window.open("tel:+244946808054")}
                                             className="w-full py-3 bg-white/10 text-white border border-white/10 rounded-xl font-black text-[9px] tracking-[0.2em] uppercase hover:bg-white hover:text-black transition-all"
                                         >
-                                            Falar Agora
+                                            {t.banners.scale.cta}
                                         </button>
                                     </div>
                                 </div>
@@ -292,8 +294,8 @@ export default function BlogPost({ lang, setLang }: BlogPostProps) {
                                 </button>
                             </div>
 
-                            <h3 className="text-xl font-black mb-1 text-white">Partilhar</h3>
-                            <p className="text-gray-500 text-[9px] mb-8 uppercase font-black tracking-[0.2em]">Synctech Insight Platform</p>
+                            <h3 className="text-xl font-black mb-1 text-white">{t.share}</h3>
+                            <p className="text-gray-500 text-[9px] mb-8 uppercase font-black tracking-[0.2em]">{t.platform}</p>
 
                             <div className="grid grid-cols-3 gap-3 mb-8">
                                 <a href={shareLinks.linkedin} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-[#0077b5]/20 group transition-all">
@@ -318,7 +320,7 @@ export default function BlogPost({ lang, setLang }: BlogPostProps) {
                                     onClick={handleCopy}
                                     className="absolute right-1.5 top-1.5 bottom-1.5 px-4 rounded-lg bg-white text-black font-black text-[9px] uppercase hover:bg-primary hover:text-white transition-all"
                                 >
-                                    {copied ? "Copiado" : "Copiar"}
+                                    {copied ? t.copied : t.copy}
                                 </button>
                             </div>
                         </motion.div>

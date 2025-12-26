@@ -15,7 +15,7 @@ export const Blog = ({ lang, isFullPage = false }: BlogProps) => {
     const t = translations[lang].blog;
     const [activeCategory, setActiveCategory] = useState("All");
 
-    const categories = ["All", ...new Set(blogData.map(post => post.category))];
+    const categories = ["All", ...Array.from(new Set(blogData.map(post => post.category)))];
 
     const filteredPosts = activeCategory === "All"
         ? blogData
@@ -100,7 +100,7 @@ export const Blog = ({ lang, isFullPage = false }: BlogProps) => {
                                         </span>
                                         {post.featured && (
                                             <span className="px-2.5 py-1 rounded-lg bg-primary/80 backdrop-blur-md border border-primary/20 text-[9px] font-black uppercase tracking-widest text-white">
-                                                Destaque do CEO
+                                                {t.ceoChoice}
                                             </span>
                                         )}
                                     </div>
@@ -147,7 +147,7 @@ export const Blog = ({ lang, isFullPage = false }: BlogProps) => {
                     >
                         <Link href="/blog">
                             <button className="px-10 py-4 rounded-2xl bg-white/5 border border-white/10 text-white font-black text-[10px] uppercase tracking-[0.3em] hover:bg-primary transition-all duration-300 shadow-xl hover:shadow-primary/20 group">
-                                Ver Todo o Blog
+                                {t.viewAll}
                                 <ArrowRight size={14} className="inline ml-2 group-hover:translate-x-1 transition-transform" />
                             </button>
                         </Link>

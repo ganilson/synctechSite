@@ -64,8 +64,10 @@ export default function Home({ lang, setLang }: HomeProps) {
   }, []);
 
   useSEO({
-    title: "Synctech - Soluções Tech & Software House Angola",
-    description: "Synctech é a Software House líder em Luanda. Especialistas em Apps, Web, Infraestrutura e Consultoria de TI. Transformamos ideias em código de alta performance.",
+    title: lang === 'en' ? "Synctech - Tech Solutions & Software House Angola" : "Synctech - Soluções Tech & Software House Angola",
+    description: lang === 'en'
+      ? "Synctech is the leading Software House in Luanda. Specialists in Apps, Web, Infrastructure and IT Consulting. We transform ideas into high-performance code."
+      : "Synctech é a Software House líder em Luanda. Especialistas em Apps, Web, Infraestrutura e Consultoria de TI. Transformamos ideias em código de alta performance.",
     keywords: "software house angola, desenvolvimento de apps luanda, web design angola, infraestrutura ti luanda, consultoria tecnológica"
   });
 
@@ -84,7 +86,7 @@ export default function Home({ lang, setLang }: HomeProps) {
         <Hero lang={lang} />
         <TechStack />
         <Portfolio lang={lang} />
-        <PromoBanner />
+        <PromoBanner lang={lang} />
         <Blog lang={lang} />
         <Gallery lang={lang} />
         <Partners lang={lang} />

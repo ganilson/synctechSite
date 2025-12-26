@@ -11,7 +11,7 @@ import { useState } from "react";
 import { Language } from "@/types";
 
 function Router() {
-  const [lang, setLang] = useState<Language>('pt');
+  const [lang, setLang] = useState<Language>('en');
 
   return (
     <Switch>

@@ -94,5 +94,52 @@ export interface TranslationData {
         all: string;
         filterBy: string;
         readMore: string;
+        viewAll: string;
+        ceoChoice: string;
+    };
+    promo: {
+        badge: string;
+        title: string;
+        titleAccent: string;
+        from: string;
+        cta: string;
+        expiry: string;
+    };
+    blogIndex: {
+        featuredBadge: string;
+        coreTeam: string;
+        readNow: string;
+        themes: {
+            software: { title: string; desc: string };
+            innovation: { title: string; desc: string };
+            performance: { title: string; desc: string };
+            explore: string;
+        };
+    };
+    blogPost: {
+        backToBlog: string;
+        notFound: string;
+        notFoundDesc: string;
+        author: string;
+        details: string;
+        tags: string;
+        share: string;
+        relatedPosts: string;
+        copy: string;
+        copied: string;
+        platform: string;
+        error: string;
+        banners: {
+            elite: {
+                title: string;
+                subtitle: string;
+                cta: string;
+            };
+            scale: {
+                title: string;
+                subtitle: string;
+                cta: string;
+            };
+        };
     };
 }

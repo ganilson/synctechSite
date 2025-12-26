@@ -120,7 +120,63 @@ export const translations: Record<Language, TranslationData> = {
             description: "Deep dives into technology, software development trends in Angola, and best practices for modern infrastructure.",
             all: "All",
             filterBy: "Filter by Category",
-            readMore: "Read Full Article"
+            readMore: "Read Full Article",
+            viewAll: "View Full Blog",
+            ceoChoice: "CEO's Choice"
+        },
+        promo: {
+            badge: "Black Sync Special 🎅",
+            title: "Transform your business with",
+            titleAccent: "Professional Websites",
+            from: "starting from 230,000 KZ",
+            cta: "View Plans & Offers",
+            expiry: "Valid until January 15"
+        },
+        blogIndex: {
+            featuredBadge: "Featured",
+            coreTeam: "Core Team",
+            readNow: "Read Now",
+            themes: {
+                software: {
+                    title: "Modern Software",
+                    desc: "React, Node.js and high-level architectures for the world."
+                },
+                innovation: {
+                    title: "Global Innovation",
+                    desc: "Digital strategies for successful businesses."
+                },
+                performance: {
+                    title: "Performance Pro",
+                    desc: "Maximum optimization for scale and low latency."
+                },
+                explore: "Explore Themes"
+            }
+        },
+        blogPost: {
+            backToBlog: "Back to Blog",
+            notFound: "Article not found",
+            notFoundDesc: "The article you are looking for might have been removed or the link is incorrect.",
+            author: "Author",
+            details: "Details",
+            tags: "Tags",
+            share: "Share",
+            relatedPosts: "Related Articles",
+            copy: "Copy",
+            copied: "Copied",
+            platform: "Synctech Insight Platform",
+            error: "Error loading article",
+            banners: {
+                elite: {
+                    title: "Elite Software",
+                    subtitle: "Luanda & World.",
+                    cta: "Consulting"
+                },
+                scale: {
+                    title: "Scale & Dev",
+                    subtitle: "Maximum Performance.",
+                    cta: "Call Now"
+                }
+            }
         }
     },
     pt: {
@@ -242,7 +298,63 @@ export const translations: Record<Language, TranslationData> = {
             description: "Análises profundas sobre tecnologia, tendências de desenvolvimento de software em Angola e infraestrutura moderna.",
             all: "Tudo",
             filterBy: "Filtrar por Categoria",
-            readMore: "Ler Artigo Completo"
+            readMore: "Ler Artigo Completo",
+            viewAll: "Ver Todo o Blog",
+            ceoChoice: "Destaque do CEO"
+        },
+        promo: {
+            badge: "Black Sync Especial 🎅",
+            title: "Transforme o seu negócio com",
+            titleAccent: "Sites Profissionais",
+            from: "a partir de 230.000 KZ",
+            cta: "Ver Planos & Ofertas",
+            expiry: "Válido até 15 de Janeiro"
+        },
+        blogIndex: {
+            featuredBadge: "Destaque",
+            coreTeam: "Equipa Principal",
+            readNow: "Ler Agora",
+            themes: {
+                software: {
+                    title: "Software Moderno",
+                    desc: "React, Node.js e arquiteturas de alto nível para o mundo."
+                },
+                innovation: {
+                    title: "Inovação Global",
+                    desc: "Estratégias digitais para empresas de sucesso."
+                },
+                performance: {
+                    title: "Performance Pro",
+                    desc: "Otimização máxima para escala e baixa latência."
+                },
+                explore: "Explorar Temas"
+            }
+        },
+        blogPost: {
+            backToBlog: "Voltar ao Blog",
+            notFound: "Artigo não encontrado",
+            notFoundDesc: "O artigo que procura pode ter sido removido ou o link está incorreto.",
+            author: "Autor",
+            details: "Detalhes",
+            tags: "Tags",
+            share: "Partilhar",
+            relatedPosts: "Artigos Relacionados",
+            copy: "Copiar",
+            copied: "Copiado",
+            platform: "Synctech Insight Platform",
+            error: "Erro ao carregar artigo",
+            banners: {
+                elite: {
+                    title: "Software de Elite",
+                    subtitle: "Luanda & Mundo.",
+                    cta: "Consultoria"
+                },
+                scale: {
+                    title: "Escala & Dev",
+                    subtitle: "Performance Máxima.",
+                    cta: "Falar Agora"
+                }
+            }
         }
     }
 };

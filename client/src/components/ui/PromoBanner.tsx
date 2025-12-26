@@ -1,9 +1,16 @@
+import { translations } from "@/lib/translations";
+import { Language } from "@/types";
 import { useState, useEffect } from "react";
+import { Link, useLocation } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, ArrowRight, Gift } from "lucide-react";
-import { useLocation } from "wouter";
+import { ArrowRight, Gift, Sparkles } from "lucide-react";
 
-export const PromoBanner = () => {
+interface PromoBannerProps {
+    lang: Language;
+}
+
+export const PromoBanner = ({ lang }: PromoBannerProps) => {
+    const t = translations[lang].promo;
     const [isVisible, setIsVisible] = useState(false);
     const [_, setLocation] = useLocation();
 
@@ -43,12 +50,12 @@ export const PromoBanner = () => {
                             </div>
                             <div className="flex flex-col">
                                 <div className="flex items-center gap-2 mb-2">
-                                    <span className="text-[12px] font-black uppercase tracking-[0.3em] text-primary">Black Sync Especial 🎅</span>
+                                    <span className="text-[12px] font-black uppercase tracking-[0.3em] text-primary">{t.badge}</span>
                                     <Sparkles size={14} className="text-warm-accent animate-bounce" />
                                 </div>
                                 <h4 className="text-2xl md:text-3xl font-black text-white leading-tight tracking-tight">
-                                    Transforme o seu negócio com <br className="hidden md:block" />
-                                    <span className="text-transparent bg-clip-text bg-gradient-warm">Sites Profissionais</span> a partir de 230.000 KZ
+                                    {t.title} <br className="hidden md:block" />
+                                    <span className="text-transparent bg-clip-text bg-gradient-warm">{t.titleAccent}</span> {t.from}
                                 </h4>
                             </div>
                         </div>
@@ -58,10 +65,10 @@ export const PromoBanner = () => {
                                 onClick={handleClick}
                                 className="flex items-center gap-3 px-8 py-4 bg-primary text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300 shadow-xl shadow-primary/30 group/btn"
                             >
-                                Ver Planos & Ofertas
+                                {t.cta}
                                 <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
                             </button>
-                            <span className="text-[10px] font-black uppercase tracking-widest text-gray-500 opacity-60">Válido até 15 de Janeiro</span>
+                            <span className="text-[10px] font-black uppercase tracking-widest text-gray-500 opacity-60">{t.expiry}</span>
                         </div>
                     </div>
 

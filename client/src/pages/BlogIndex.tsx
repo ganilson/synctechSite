@@ -9,6 +9,7 @@ import { AIChat } from "@/components/sections/AIChat";
 import { ArrowRight, Code, Globe, Zap } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
 import blogData from "@/lib/blog.json";
+import { translations } from "@/lib/translations";
 
 interface BlogIndexProps {
     lang: Language;
@@ -16,13 +17,14 @@ interface BlogIndexProps {
 }
 
 export default function BlogIndex({ lang, setLang }: BlogIndexProps) {
+    const t = translations[lang].blogIndex;
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
     useSEO({
-        title: "Blog Synctech | Insights sobre Tecnologia e Inovação em Angola",
-        description: "Explore os últimos artigos sobre desenvolvimento de software, ORMs, transformação digital e o mercado tecnológico em Luanda. O conhecimento que move Angola.",
+        title: lang === 'en' ? "Synctech Blog | Insights on Technology and Innovation in Angola" : "Blog Synctech | Insights sobre Tecnologia e Inovação em Angola",
+        description: lang === 'en' ? "Explore the latest articles on software development, ORMs, digital transformation and the tech market in Luanda. The knowledge that moves Angola." : "Explore os últimos artigos sobre desenvolvimento de software, ORMs, transformação digital e o mercado tecnológico em Luanda. O conhecimento que move Angola.",
         keywords: "blog tecnologia angola, tech insights luanda, desenvolvimento de software angola, inovação tech"
     });
 
@@ -46,7 +48,7 @@ export default function BlogIndex({ lang, setLang }: BlogIndexProps) {
                                 className="flex items-center gap-2 mb-5"
                             >
                                 <span className="px-2.5 py-1 rounded-lg bg-primary/20 text-primary text-[9px] font-black uppercase tracking-widest border border-primary/20">
-                                    Destaque
+                                    {t.featuredBadge}
                                 </span>
                                 <span className="text-gray-500 text-[9px] font-black uppercase tracking-widest italic">
                                     • {featuredPost.category}
@@ -80,7 +82,7 @@ export default function BlogIndex({ lang, setLang }: BlogIndexProps) {
                                     href={`/blog/${featuredPost.slug}`}
                                     className="inline-flex items-center gap-2.5 px-7 py-3.5 bg-white text-black rounded-full font-black text-xs uppercase tracking-widest hover:bg-primary hover:text-white transition-all group shadow-xl"
                                 >
-                                    Ler Agora
+                                    {t.readNow}
                                     <ArrowRight size={16} className="group-hover:translate-x-1.5 transition-transform" />
                                 </a>
                             </motion.div>
@@ -103,34 +105,34 @@ export default function BlogIndex({ lang, setLang }: BlogIndexProps) {
                 {/* Popular Themes - Tightened */}
                 <section className="container mx-auto px-6 mb-20">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-                        <div className="p-7 rounded-[2rem] bg-zinc-900/40 border border-white/5 hover:border-primary/30 transition-all group backdrop-blur-sm">
+                        <div className="p-7 rounded-[2rem] bg-zinc-900/40 border border-white/5 hover:border-primary/30 transition-all group backdrop-blur-sm shadow-xl hover:shadow-primary/5">
                             <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:rotate-6 transition-transform">
                                 <Code className="text-primary" size={20} />
                             </div>
-                            <h3 className="text-base font-black mb-3 text-white uppercase tracking-tight">Software Moderno</h3>
-                            <p className="text-[11px] text-gray-500 mb-6 leading-relaxed font-medium italic">React, Node.js e arquiteturas de alto nível para Angola.</p>
-                            <span className="text-[9px] font-black uppercase tracking-[0.2em] text-primary flex items-center gap-2 group-hover:gap-3 transition-all">
-                                Explorar Temas <ArrowRight size={12} />
+                            <h3 className="text-base font-black mb-3 text-white uppercase tracking-tight">{t.themes.software.title}</h3>
+                            <p className="text-[11px] text-gray-400 mb-6 leading-relaxed font-medium italic">{t.themes.software.desc}</p>
+                            <span className="text-[9px] font-black uppercase tracking-[0.2em] text-primary flex items-center gap-2 group-hover:gap-3 transition-all cursor-pointer">
+                                {t.themes.explore} <ArrowRight size={12} />
                             </span>
                         </div>
-                        <div className="p-7 rounded-[2rem] bg-zinc-900/40 border border-white/5 hover:border-blue-500/30 transition-all group backdrop-blur-sm">
+                        <div className="p-7 rounded-[2rem] bg-zinc-900/40 border border-white/5 hover:border-blue-500/30 transition-all group backdrop-blur-sm shadow-xl hover:shadow-blue-500/5">
                             <div className="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center mb-5 group-hover:-rotate-6 transition-transform">
                                 <Globe className="text-blue-500" size={20} />
                             </div>
-                            <h3 className="text-base font-black mb-3 text-white uppercase tracking-tight">Inovação Luanda</h3>
-                            <p className="text-[11px] text-gray-500 mb-6 leading-relaxed font-medium italic">Estratégias digitais para empresas locais de sucesso.</p>
-                            <span className="text-[9px] font-black uppercase tracking-[0.2em] text-blue-500 flex items-center gap-2 group-hover:gap-3 transition-all">
-                                Explorar Temas <ArrowRight size={12} />
+                            <h3 className="text-base font-black mb-3 text-white uppercase tracking-tight">{t.themes.innovation.title}</h3>
+                            <p className="text-[11px] text-gray-400 mb-6 leading-relaxed font-medium italic">{t.themes.innovation.desc}</p>
+                            <span className="text-[9px] font-black uppercase tracking-[0.2em] text-blue-500 flex items-center gap-2 group-hover:gap-3 transition-all cursor-pointer">
+                                {t.themes.explore} <ArrowRight size={12} />
                             </span>
                         </div>
-                        <div className="p-7 rounded-[2rem] bg-zinc-900/40 border border-white/5 hover:border-warm-accent/30 transition-all group backdrop-blur-sm">
+                        <div className="p-7 rounded-[2rem] bg-zinc-900/40 border border-white/5 hover:border-warm-accent/30 transition-all group backdrop-blur-sm shadow-xl hover:shadow-warm-accent/5">
                             <div className="w-10 h-10 rounded-xl bg-warm-accent/10 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
                                 <Zap className="text-warm-accent" size={20} />
                             </div>
-                            <h3 className="text-base font-black mb-3 text-white uppercase tracking-tight">Performance Pro</h3>
-                            <p className="text-[11px] text-gray-500 mb-6 leading-relaxed font-medium italic">Otimização máxima para escala e baixa latência.</p>
-                            <span className="text-[9px] font-black uppercase tracking-[0.2em] text-warm-accent flex items-center gap-2 group-hover:gap-3 transition-all">
-                                Explorar Temas <ArrowRight size={12} />
+                            <h3 className="text-base font-black mb-3 text-white uppercase tracking-tight">{t.themes.performance.title}</h3>
+                            <p className="text-[11px] text-gray-400 mb-6 leading-relaxed font-medium italic">{t.themes.performance.desc}</p>
+                            <span className="text-[9px] font-black uppercase tracking-[0.2em] text-warm-accent flex items-center gap-2 group-hover:gap-3 transition-all cursor-pointer">
+                                {t.themes.explore} <ArrowRight size={12} />
                             </span>
                         </div>
                     </div>
