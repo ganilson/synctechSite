@@ -31,10 +31,7 @@ export const Hero = ({ lang }: HeroProps) => {
                     transition={{ duration: 0.7 }}
                     className="max-w-5xl mx-auto space-y-8"
                 >
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-4">
-                        <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
-                        <span className="text-xs font-medium tracking-wide uppercase text-gray-300">{t.tagline}</span>
-                    </div>
+
 
                     <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-[0.9]">
                         <span className="block text-transparent bg-clip-text bg-gradient-to-b from-white to-white/50">{t.title1}</span>
@@ -44,6 +41,11 @@ export const Hero = ({ lang }: HeroProps) => {
                     <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed font-light">
                         {t.subtitle}
                     </p>
+
+                                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-4">
+                        <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
+                        <span className="text-xs font-medium tracking-wide uppercase text-gray-300">{t.tagline}</span>
+                    </div>
 
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-8">
                         <div className="flex items-center gap-4 bg-white/5 border border-white/10 backdrop-blur-xl rounded-full p-2 pr-6">
