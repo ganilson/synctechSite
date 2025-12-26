@@ -81,10 +81,10 @@ export default function Home({ lang, setLang }: HomeProps) {
         transition={{ duration: 1, ease: "easeOut" }}
       >
         <Navbar lang={lang} setLang={setLang} />
-        <PromoBanner />
         <Hero lang={lang} />
         <TechStack />
         <Portfolio lang={lang} />
+        <PromoBanner />
         <Blog lang={lang} />
         <Gallery lang={lang} />
         <Partners lang={lang} />

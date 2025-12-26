@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Sparkles, ArrowRight, Gift } from "lucide-react";
+import { Sparkles, ArrowRight, Gift } from "lucide-react";
 import { useLocation } from "wouter";
 
 export const PromoBanner = () => {
@@ -13,76 +13,65 @@ export const PromoBanner = () => {
         const now = new Date();
 
         if (now < expiryDate) {
-            // Only show if not dismissed in the last 24h
-            const dismissedAt = localStorage.getItem("black_sync_dismissed");
-            if (!dismissedAt || (now.getTime() - parseInt(dismissedAt)) > 86400000) {
-                setTimeout(() => setIsVisible(true), 2000);
-            }
+            setIsVisible(true);
         }
     }, []);
-
-    const dismiss = () => {
-        setIsVisible(false);
-        localStorage.setItem("black_sync_dismissed", new Date().getTime().toString());
-    };
 
     const handleClick = () => {
         setLocation("/blog/black-sync-natal-tech-synctech");
         window.scrollTo(0, 0);
     };
 
+    if (!isVisible) return null;
+
     return (
-        <AnimatePresence>
-            {isVisible && (
+        <section className="pb-12 pt-4 bg-background relative overflow-hidden">
+            <div className="container mx-auto px-6">
                 <motion.div
-                    initial={{ y: -100, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: -100, opacity: 0 }}
-                    className="fixed top-24 left-1/2 -translate-x-1/2 z-[80] w-[95%] max-w-2xl"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    className="relative group overflow-hidden rounded-[2.5rem] border border-primary/30 bg-zinc-900/40 backdrop-blur-xl p-8 md:p-10 shadow-2xl shadow-primary/10"
                 >
-                    <div className="relative group overflow-hidden rounded-2xl border border-primary/30 bg-black/80 backdrop-blur-xl p-4 md:p-5 shadow-2xl shadow-primary/20">
-                        {/* Animated background glow */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-purple-500/10 to-primary/10 animate-pulse" />
+                    {/* Animated background glow */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-purple-500/5 to-primary/5 animate-pulse" />
 
-                        <div className="relative flex items-center justify-between gap-4">
-                            <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center text-primary shrink-0 group-hover:scale-110 transition-transform">
-                                    <Gift size={20} />
-                                </div>
-                                <div className="flex flex-col">
-                                    <div className="flex items-center gap-2">
-                                        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">Black Sync Especial 🎅</span>
-                                        <Sparkles size={10} className="text-warm-accent animate-bounce" />
-                                    </div>
-                                    <h4 className="text-sm font-black text-white leading-tight">Sites Profissionais a partir de 230.000 KZ</h4>
-                                </div>
+                    <div className="relative flex flex-col md:flex-row items-center justify-between gap-8">
+                        <div className="flex items-center gap-6">
+                            <div className="w-16 h-16 rounded-2xl bg-primary/20 flex items-center justify-center text-primary shrink-0 group-hover:scale-110 transition-transform duration-500 shadow-lg shadow-primary/20">
+                                <Gift size={32} />
                             </div>
-
-                            <div className="flex items-center gap-2">
-                                <button
-                                    onClick={handleClick}
-                                    className="hidden md:flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg font-black text-[10px] uppercase tracking-widest hover:bg-white hover:text-black transition-all"
-                                >
-                                    Ver Oferta
-                                    <ArrowRight size={12} />
-                                </button>
-                                <button
-                                    onClick={dismiss}
-                                    className="p-2 text-gray-500 hover:text-white hover:bg-white/10 rounded-lg transition-all"
-                                >
-                                    <X size={18} />
-                                </button>
+                            <div className="flex flex-col">
+                                <div className="flex items-center gap-2 mb-2">
+                                    <span className="text-[12px] font-black uppercase tracking-[0.3em] text-primary">Black Sync Especial 🎅</span>
+                                    <Sparkles size={14} className="text-warm-accent animate-bounce" />
+                                </div>
+                                <h4 className="text-2xl md:text-3xl font-black text-white leading-tight tracking-tight">
+                                    Transforme o seu negócio com <br className="hidden md:block" />
+                                    <span className="text-transparent bg-clip-text bg-gradient-warm">Sites Profissionais</span> a partir de 230.000 KZ
+                                </h4>
                             </div>
                         </div>
 
-                        {/* Mobile tap area */}
-                        <div
-                            className="absolute inset-0 md:hidden cursor-pointer"
-                            onClick={handleClick}
-                        />
+                        <div className="flex flex-col items-center md:items-end gap-4 min-w-[200px]">
+                            <button
+                                onClick={handleClick}
+                                className="flex items-center gap-3 px-8 py-4 bg-primary text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300 shadow-xl shadow-primary/30 group/btn"
+                            >
+                                Ver Planos & Ofertas
+                                <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
+                            </button>
+                            <span className="text-[10px] font-black uppercase tracking-widest text-gray-500 opacity-60">Válido até 15 de Janeiro</span>
+                        </div>
                     </div>
+
+                    {/* Mobile/Desktop card interactive layer */}
+                    <div
+                        className="absolute inset-0 cursor-pointer z-10 opacity-0"
+                        onClick={handleClick}
+                    />
                 </motion.div>
-            )}
-        </AnimatePresence>
+            </div>
+        </section>
     );
 };

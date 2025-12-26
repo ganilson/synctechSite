@@ -9,7 +9,7 @@
     gap: 2rem;
     max-width: 1600px;
     margin: 0 auto;
-    padding: 3rem 1.5rem;
+    padding: 3rem 1.5rem 0 1.5rem;
     box-sizing: border-box;
 
     --x: 50%;

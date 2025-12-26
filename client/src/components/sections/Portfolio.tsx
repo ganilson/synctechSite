@@ -90,7 +90,7 @@ export const Portfolio = ({ lang }: PortfolioProps) => {
     ];
 
     return (
-        <section id="portfolio" className="py-12 relative z-20 overflow-hidden">
+        <section id="portfolio" className="pt-12 pb-0 relative z-20 overflow-hidden">
             <div className="container mx-auto px-6 mb-8 text-center">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -107,7 +107,7 @@ export const Portfolio = ({ lang }: PortfolioProps) => {
                 </motion.div>
             </div>
 
-            <div className="relative w-full min-h-[1000px]">
+            <div className="relative w-full min-h-[700px]">
                 <ChromaGrid
                     items={projects}
                     onItemClick={(item) => setSelectedProject(item as Project)}

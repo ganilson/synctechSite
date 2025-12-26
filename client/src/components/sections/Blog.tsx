@@ -8,9 +8,10 @@ import blogData from "@/lib/blog.json";
 
 interface BlogProps {
     lang: Language;
+    isFullPage?: boolean;
 }
 
-export const Blog = ({ lang }: BlogProps) => {
+export const Blog = ({ lang, isFullPage = false }: BlogProps) => {
     const t = translations[lang].blog;
     const [activeCategory, setActiveCategory] = useState("All");
 
@@ -19,6 +20,9 @@ export const Blog = ({ lang }: BlogProps) => {
     const filteredPosts = activeCategory === "All"
         ? blogData
         : blogData.filter(post => post.category === activeCategory);
+
+    // Limit to 3 posts for homepage, show all for full page
+    const displayPosts = isFullPage ? filteredPosts : filteredPosts.slice(0, 3);
 
     return (
         <section id="blog" className="py-20 bg-background relative overflow-hidden">
@@ -74,7 +78,7 @@ export const Blog = ({ lang }: BlogProps) => {
                 {/* Grid - Tightened spacing and card size */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <AnimatePresence mode="popLayout">
-                        {filteredPosts.map((post, i) => (
+                        {displayPosts.map((post, i) => (
                             <motion.article
                                 key={post.id}
                                 layout
@@ -131,6 +135,24 @@ export const Blog = ({ lang }: BlogProps) => {
                         ))}
                     </AnimatePresence>
                 </div>
+
+                {/* View All Button - Only on homepage */}
+                {!isFullPage && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 15 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.3 }}
+                        className="mt-12 text-center"
+                    >
+                        <Link href="/blog">
+                            <button className="px-10 py-4 rounded-2xl bg-white/5 border border-white/10 text-white font-black text-[10px] uppercase tracking-[0.3em] hover:bg-primary transition-all duration-300 shadow-xl hover:shadow-primary/20 group">
+                                Ver Todo o Blog
+                                <ArrowRight size={14} className="inline ml-2 group-hover:translate-x-1 transition-transform" />
+                            </button>
+                        </Link>
+                    </motion.div>
+                )}
             </div>
 
             {/* Structured Data for SEO */}

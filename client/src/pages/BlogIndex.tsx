@@ -31,7 +31,6 @@ export default function BlogIndex({ lang, setLang }: BlogIndexProps) {
     return (
         <div className="min-h-screen bg-background text-white selection:bg-primary/30 dark font-sans overflow-x-hidden">
             <Navbar lang={lang} setLang={setLang} />
-            <PromoBanner />
 
             <main className="pt-28 pb-16">
                 {/* Hero / Cover Area - More Compact */}
@@ -138,7 +137,7 @@ export default function BlogIndex({ lang, setLang }: BlogIndexProps) {
                 </section>
 
                 {/* Main List */}
-                <BlogSection lang={lang} />
+                <BlogSection lang={lang} isFullPage={true} />
             </main>
 
             <Footer lang={lang} />

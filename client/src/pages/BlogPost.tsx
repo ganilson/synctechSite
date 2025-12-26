@@ -66,7 +66,6 @@ export default function BlogPost({ lang, setLang }: BlogPostProps) {
     return (
         <div className="min-h-screen bg-background text-white selection:bg-primary/30 dark font-sans overflow-x-hidden">
             <Navbar lang={lang} setLang={setLang} />
-            <PromoBanner />
 
             <main className="pt-28 pb-16">
                 <article className="container mx-auto px-6 max-w-[1240px]">
