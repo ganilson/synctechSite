@@ -95,8 +95,18 @@ export const ModalProjectPreview = ({ url, title }: ModalProjectPreviewProps) =>
                 }
                 @container (min-width: 0px) {
                     .modal-preview-container {
-                        /* Aggressive scaling: fill 21:9 snapshot */
+                        /* Aggressive scaling: fill snapshot */
                         --modal-preview-scale: min(calc(100cqw / 2100), calc((100cqh - 40px) / 900));
+                    }
+                }
+                /* Mobile specific tweaks */
+                @media (max-width: 768px) {
+                    :root {
+                        --modal-preview-scale: 0.25;
+                    }
+                    .modal-preview-content-wrapper {
+                        width: 1800px !important;
+                        height: 1200px !important;
                     }
                 }
                 /* Focus on width if the aspect ratio allows it to be taller */

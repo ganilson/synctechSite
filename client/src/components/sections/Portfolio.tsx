@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChromaGrid } from "../ui/ChromaGrid";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { Language } from "@/types";
 import {
     Dialog,
@@ -18,6 +19,7 @@ import { ModalProjectPreview } from "../ui/ModalProjectPreview";
 
 // Assets (Keep some placeholders for the thumbnails)
 import eduportalImg from "@assets/generated_images/eduportal.png";
+import syncTechLogo from "@assets/SyncTech_LOGO_01_White_1764691366645.png";
 
 import { translations } from "@/lib/translations";
 
@@ -35,9 +37,11 @@ interface Project {
     description: string;
     tags: string[];
     url: string;
+    logo?: string;
 }
 
 export const Portfolio = ({ lang }: PortfolioProps) => {
+    const isMobile = useIsMobile();
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
     const t = translations[lang].portfolio;
 
@@ -49,7 +53,8 @@ export const Portfolio = ({ lang }: PortfolioProps) => {
             borderColor: "#FF7A3A",
             gradient: "linear-gradient(145deg, rgba(255, 122, 58, 0.2), #000)",
             tags: ["FastAPI", "VueJs", "Postgresql", "TabernacleORM", "asyncio"],
-            url: "https://pracadgt.com"
+            url: "https://pracadgt.com",
+            logo: syncTechLogo
         },
         {
             image: eduportalImg,
@@ -58,7 +63,8 @@ export const Portfolio = ({ lang }: PortfolioProps) => {
             borderColor: "#3B82F6",
             gradient: "linear-gradient(180deg, rgba(59, 130, 246, 0.2), #000)",
             tags: ["Node.js", "MongoDB", "React", "TypeScript"],
-            url: "https://syncmenu.ao"
+            url: "https://syncmenu.ao",
+            logo: syncTechLogo
         },
         {
             image: eduportalImg,
@@ -67,7 +73,8 @@ export const Portfolio = ({ lang }: PortfolioProps) => {
             borderColor: "#10B981",
             gradient: "linear-gradient(165deg, rgba(16, 185, 129, 0.2), #000)",
             tags: ["Node.js", "MongoDB", "React", "TypeScript"],
-            url: "https://fisarq.com"
+            url: "https://fisarq.com",
+            logo: syncTechLogo
         },
         {
             image: eduportalImg,
@@ -76,7 +83,8 @@ export const Portfolio = ({ lang }: PortfolioProps) => {
             borderColor: "#8B5CF6",
             gradient: "linear-gradient(195deg, rgba(139, 92, 246, 0.2), #000)",
             tags: ["Node.js", "MongoDB", "React", "TypeScript"],
-            url: "https://talagas.com"
+            url: "https://talagas.com",
+            logo: syncTechLogo
         },
         {
             image: eduportalImg,
@@ -85,7 +93,8 @@ export const Portfolio = ({ lang }: PortfolioProps) => {
             borderColor: "#06B6D4",
             gradient: "linear-gradient(135deg, rgba(6, 182, 212, 0.2), #000)",
             tags: ["Node.js", "MongoDB", "React", "TypeScript"],
-            url: "https://realezaoral.net"
+            url: "https://realezaoral.net",
+            logo: syncTechLogo
         }
     ];
 
@@ -115,7 +124,7 @@ export const Portfolio = ({ lang }: PortfolioProps) => {
                     damping={0.4}
                     fadeOut={0.6}
                     ease="power3.out"
-                    columns={4}
+                    columns={isMobile ? 1 : 4}
                 />
             </div>
 
@@ -123,7 +132,7 @@ export const Portfolio = ({ lang }: PortfolioProps) => {
                 <DialogContent className="max-w-[95vw] md:max-w-7xl bg-black/95 backdrop-blur-3xl border-white/10 p-0 overflow-hidden rounded-[2.5rem] gap-0">
                     <div className="flex flex-col md:flex-row h-full max-h-[95vh] md:max-h-[85vh] overflow-y-auto md:overflow-hidden">
                         {/* Left Column: WebView Preview (Cinematic 21:9) */}
-                        <div className="w-full md:w-3/4 relative aspect-[21/9] md:aspect-auto bg-zinc-950 md:min-h-[600px] border-r border-white/5">
+                        <div className="w-full md:w-3/4 relative aspect-video md:aspect-auto bg-zinc-950 md:min-h-[600px] border-r border-white/5">
                             {selectedProject && (
                                 <ModalProjectPreview
                                     url={selectedProject.url}

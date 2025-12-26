@@ -1,6 +1,7 @@
 import { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ProjectPreview } from './ProjectPreview';
+import { useIsMobile } from '@/hooks/use-mobile';
 import './ChromaGrid.css';
 
 interface ChromaGridItem {
@@ -12,6 +13,7 @@ interface ChromaGridItem {
     gradient: string;
     url?: string;
     location?: string;
+    logo?: string;
 }
 
 interface ChromaGridProps {
@@ -37,6 +39,7 @@ export const ChromaGrid = ({
     ease = 'power3.out',
     onItemClick
 }: ChromaGridProps) => {
+    const isMobile = useIsMobile();
     const rootRef = useRef<HTMLDivElement>(null);
     const fadeRef = useRef<HTMLDivElement>(null);
     const setX = useRef<any>(null);
@@ -160,7 +163,7 @@ export const ChromaGrid = ({
                     } as React.CSSProperties}
                 >
                     <div className="chroma-img-wrapper">
-                        {c.url ? (
+                        {c.url && !isMobile ? (
                             <div className="card-webview-wrapper">
                                 <ProjectPreview url={c.url} title={c.title} />
                                 <div className="card-webview-overlay" />
@@ -169,7 +172,17 @@ export const ChromaGrid = ({
                                 </div>
                             </div>
                         ) : (
-                            <img src={c.image} alt={c.title} loading="lazy" />
+                            <div className="flex items-center justify-center h-[200px] w-full bg-zinc-900 overflow-hidden relative group">
+                                <img
+                                    src={isMobile && c.logo ? c.logo : c.image}
+                                    alt={c.title}
+                                    loading="lazy"
+                                    className={`w-full h-full p-8 transition-all duration-700 ease-out group-hover:scale-110 ${isMobile && c.logo ? 'object-contain' : 'object-cover p-0'}`}
+                                />
+                                {isMobile && (
+                                    <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
+                                )}
+                            </div>
                         )}
                     </div>
                     <footer className="chroma-info">
