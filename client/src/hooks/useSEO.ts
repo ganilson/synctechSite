@@ -17,6 +17,14 @@ export const useSEO = ({
     type = 'website',
     image = '/og-image.png'
 }: SEOProps) => {
+    const baseUrl = 'https://synctech.ao';
+    const currentUrl = typeof window !== 'undefined' ? window.location.href : baseUrl;
+
+    // Ensure absolute image URL
+    const absoluteImage = image.startsWith('http')
+        ? image
+        : `${baseUrl}${image.startsWith('/') ? '' : '/'}${image}`;
+
     useEffect(() => {
         // Update Title
         const fullTitle = `${title} | Synctech - Inovação e Tecnologia`;
@@ -40,17 +48,17 @@ export const useSEO = ({
         }
 
         // Update Open Graph Tags
-        const ogTitle = document.querySelector('meta[property="og:title"]');
-        if (ogTitle) ogTitle.setAttribute('content', fullTitle);
+        updateMeta('property', 'og:title', fullTitle);
+        updateMeta('property', 'og:description', description);
+        updateMeta('property', 'og:image', absoluteImage);
+        updateMeta('property', 'og:type', type);
+        updateMeta('property', 'og:url', currentUrl);
 
-        const ogDescription = document.querySelector('meta[property="og:description"]');
-        if (ogDescription) ogDescription.setAttribute('content', description);
-
-        const ogImage = document.querySelector('meta[property="og:image"]');
-        if (ogImage) ogImage.setAttribute('content', image);
-
-        const ogType = document.querySelector('meta[property="og:type"]');
-        if (ogType) ogType.setAttribute('content', type);
+        // Update Twitter Tags
+        updateMeta('name', 'twitter:title', fullTitle);
+        updateMeta('name', 'twitter:description', description);
+        updateMeta('name', 'twitter:image', absoluteImage);
+        updateMeta('name', 'twitter:url', currentUrl);
 
         // Update Canonical
         let linkCanonical = document.querySelector('link[rel="canonical"]');
@@ -66,3 +74,13 @@ export const useSEO = ({
         // Optional: Reset on unmount if needed, but for SPAs usually just letting the next page override is fine
     }, [title, description, keywords, canonical, type, image]);
 };
+
+function updateMeta(attr: 'name' | 'property', key: string, content: string) {
+    let el = document.querySelector(`meta[${attr}="${key}"]`);
+    if (!el) {
+        el = document.createElement('meta');
+        el.setAttribute(attr, key);
+        document.head.appendChild(el);
+    }
+    el.setAttribute('content', content);
+}

@@ -31,10 +31,10 @@ export default function BlogPost({ lang, setLang }: BlogPostProps) {
     const relatedPosts = blogData.filter(p => p.slug !== slug).slice(0, 2);
 
     useSEO({
-        title: post?.seo.title || post?.title || (lang === 'en' ? "Article" : "Artigo"),
-        description: post?.seo.description || post?.excerpt || "",
-        keywords: post?.seo.keywords,
-        image: post?.image,
+        title: post?.seo?.title || post?.title || (lang === 'en' ? "Article" : "Artigo"),
+        description: post?.seo?.description || post?.excerpt || "",
+        keywords: post?.seo?.keywords,
+        image: post?.image || '/og-image.png',
         type: 'article'
     });
 
