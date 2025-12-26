@@ -1,0 +1,226 @@
+[
+    {
+        "id": 4,
+        "title": "Black Sync: O Natal Mais Tech com a Synctech",
+        "slug": "black-sync-natal-tech-synctech",
+        "category": "Promo",
+        "date": "2025-12-26",
+        "readTime": "4 min read",
+        "author": "Equipa Synctech",
+        "featured": false,
+        "excerpt": "Aproveite a nossa promoção Black Sync de Natal! Desenvolva o seu site profissional com planos exclusivos de 230.000 KZ e 350.000 KZ.",
+        "body": [
+            {
+                "type": "paragraph",
+                "content": "Neste Natal, a Synctech quer ajudar o seu negócio a brilhar digitalmente. Lançamos a campanha 'Black Sync', uma oportunidade única para adquirir soluções de software de alta performance com descontos históricos."
+            },
+            {
+                "type": "image",
+                "url": "/src/assets/black_sync_promo.png",
+                "caption": "Black Sync: Faça alguém feliz este Natal com tecnologia de ponta."
+            },
+            {
+                "type": "heading",
+                "content": "Planos Black Sync"
+            },
+            {
+                "type": "paragraph",
+                "content": "Desenhamos dois pacotes especiais que cobrem desde necessidades essenciais até requisitos profissionais avançados:"
+            },
+            {
+                "type": "image",
+                "url": "/src/assets/black_sync_plans.png",
+                "caption": "Escolha o plano ideal para a sua empresa."
+            },
+            {
+                "type": "paragraph",
+                "content": "• **Plano ESS (Essencial): 230.000 KZ** - Ideal para quem precisa de presença digital rápida e eficiente.\n• **Plano PRO (Profissional): 350.000 KZ** - Automação de processos, 10 caixas de email e assistência premium."
+            },
+            {
+                "type": "heading",
+                "content": "Como Aproveitar?"
+            },
+            {
+                "type": "paragraph",
+                "content": "Esta promoção é válida apenas até ao dia 15 de Janeiro de 2026. Não perca a chance de transformar a sua presença digital com a Software House líder em Angola. Fale connosco agora através do +244 946 808 054."
+            }
+        ],
+        "image": "/src/assets/black_sync_promo.png",
+        "tags": [
+            "BlackSync",
+            "Promoção",
+            "Natal",
+            "Website",
+            "Angola"
+        ],
+        "seo": {
+            "title": "Black Sync 2025 | Promoção Natal Synctech Sites Angola",
+            "description": "Promoção Black Sync de Natal: Sites profissionais em Angola por apenas 230.000 KZ. Oferta limitada até Janeiro de 2026 pela Synctech.",
+            "keywords": "black sync angola, promoção sites natal luanda, synctech promoção, desenvolvimento web barato angola, oferta natal ti"
+        }
+    },
+    {
+        "id": 3,
+        "title": "TabernacleORM: O Futuro das Bases de Dados Multi-Engine",
+        "slug": "tabernacleorm-futuro-bases-dados-multi-engine",
+        "category": "Tech",
+        "date": "2025-12-24",
+        "readTime": "15 min read",
+        "author": "Ganilson Garcia",
+        "featured": true,
+        "excerpt": "Exploração profunda do TabernacleORM v2.1: A biblioteca Python que unifica MongoDB e SQL com performance de elite e controlo total de réplicas.",
+        "body": [
+            {
+                "type": "paragraph",
+                "content": "O desenvolvimento de software moderno exige flexibilidade. Escolher entre SQL e NoSQL muitas vezes significa ficar preso a uma arquitetura rígida. O TabernacleORM, criado por Ganilson Garcia (CEO da Synctech), nasce para quebrar essas barreiras e unificar o ecossistema Python."
+            },
+            {
+                "type": "heading",
+                "content": "API Unificada: O Poder da Abstração"
+            },
+            {
+                "type": "paragraph",
+                "content": "A grande inovação do TabernacleORM é a sua capacidade de desacoplar a lógica de negócio do motor de base de dados. Pode escrever o mesmo código hoje para SQLite em desenvolvimento e migrar para PostgreSQL ou MongoDB em produção com zero alterações na lógica do modelo."
+            },
+            {
+                "type": "code",
+                "language": "python",
+                "content": "from tabernacleorm import connect\n\n# Ligação robusta a qualquer motor\ndb = connect(\"postgresql://user:pass@localhost:5432/myapp\")\nawait db.connect()\n\n# Query fluida e assíncrona\nuser = await User.create(name=\"Ganilson Garcia\", role=\"CEO\")",
+                "caption": "Configuração minimalista para performance máxima."
+            },
+            {
+                "type": "heading",
+                "content": "Experiência Inspirada em Mongoose (v2.1)"
+            },
+            {
+                "type": "paragraph",
+                "content": "Para programadores habituados ao ecossistema Node.js, o TabernacleORM oferece uma sintaxe familiar e poderosa. Com métodos como findByIdAndUpdate e findOneAndDelete, a manipulação de dados torna-se intuitiva e segura."
+            },
+            {
+                "type": "code",
+                "language": "python",
+                "content": "# Consultas avançadas com filtros complexos\nactive_users = await User.find({\n    \"status\": \"active\",\n    \"age\": {\"$gte\": 25}\n}).sort(\"-created_at\").limit(10).exec()",
+                "caption": "Consultas sofisticadas com sintaxe expressiva."
+            },
+            {
+                "type": "heading",
+                "content": "Alta Disponibilidade com Replica Sets"
+            },
+            {
+                "type": "paragraph",
+                "content": "A versão v2.1 introduz suporte nativo para MongoDB Replica Sets. Isto permite escalabilidade horizontal massiva, distribuindo leituras por múltiplos nós enquanto mantém a escrita centralizada no nó primário, garantindo durabilidade máxima."
+            },
+            {
+                "type": "code",
+                "language": "python",
+                "content": "# Configuração de Réplica escalável\nfrom tabernacleorm.decorators import read_from_secondary\n\n@app.get(\"/analytics/dashboard\")\n@read_from_secondary\nasync def get_dashboard_stats():\n    # Esta leitura é executada num nó secundário (3x mais performance)\n    return await Order.aggregate([...]).exec()",
+                "caption": "Distribuição inteligente de carga para sistemas críticos."
+            },
+            {
+                "type": "heading",
+                "content": "Benchmarks de Performance"
+            },
+            {
+                "type": "paragraph",
+                "content": "Em testes laboratoriais realizados na Synctech, o TabernacleORM demonstrou uma redução de 40% no overhead de serialização em comparação com ORMs tradicionais. A sua base assíncrona tira proveito total do I/O não-bloqueante, tornando-o ideal para APIs de alta carga com FastAPI."
+            }
+        ],
+        "image": "/src/assets/tabernacle_logo.jpg",
+        "tags": [
+            "Python",
+            "ORM",
+            "OpenSource",
+            "Database",
+            "Synctech"
+        ],
+        "seo": {
+            "title": "TabernacleORM v2.1 | Guia Técnico Completo por Ganilson Garcia",
+            "description": "Entenda como o TabernacleORM da Synctech está a revolucionar a gestão de dados em Python. MongoDB, SQL e Replica Sets com performance de elite.",
+            "keywords": "tabernacleorm, ganilson garcia, synctech, orm python 2025, mongodb python replica set, async coding, software de impacto angola"
+        }
+    },
+    {
+        "id": 1,
+        "title": "Software em Angola: Desafios e Oportunidades 2026",
+        "slug": "futuro-desenvolvimento-software-angola",
+        "category": "Insight",
+        "date": "2025-12-20",
+        "readTime": "8 min read",
+        "author": "Equipa Synctech",
+        "featured": false,
+        "excerpt": "Angola está a liderar a transformação digital na África Central. Explore como a digitalização está a moldar o futuro de Luanda.",
+        "body": [
+            {
+                "type": "paragraph",
+                "content": "O cenário tecnológico em Angola está a passar por uma transformação sem precedentes. Com o aumento da conectividade, o desenvolvimento de software tornou-se o pilar central da nova economia angolana."
+            },
+            {
+                "type": "heading",
+                "content": "Ecossistema Tech Luanda"
+            },
+            {
+                "type": "paragraph",
+                "content": "Nos últimos anos, Luanda viu o nascimento de inúmeras startups e software houses. A necessidade de soluções locais para problemas locais impulsionou a demanda por talentos qualificados em stacks modernas."
+            },
+            {
+                "type": "image",
+                "url": "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&q=80&w=1200",
+                "caption": "Inovação tecnológica no coração de Luanda."
+            }
+        ],
+        "image": "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=1000",
+        "tags": [
+            "Dev",
+            "Angola",
+            "Estratégia",
+            "Tech"
+        ],
+        "seo": {
+            "title": "Desenvolvimento de Software Angola 2026 | Inovação e Tendências",
+            "description": "O guia definitivo sobre o mercado de software em Angola. Tendências para 2026, oportunidades de negócio e a liderança da Synctech em Luanda.",
+            "keywords": "software desenvolvimento angola, tecnologia luanda, synctech, inovação tecnológica angola, desenvolvedores angolanos, mercado it angola"
+        }
+    },
+    {
+        "id": 2,
+        "title": "Estratégias de Transformação Digital para PMEs",
+        "slug": "transformacao-digital-empresas-angolanas",
+        "category": "Tips",
+        "date": "2025-12-15",
+        "readTime": "5 min read",
+        "author": "Equipa Synctech",
+        "featured": false,
+        "excerpt": "A transformação digital é o motor do crescimento moderno. Veja como modernizar o seu negócio com eficiência e baixo custo.",
+        "body": [
+            {
+                "type": "paragraph",
+                "content": "Muitas empresas em Angola ainda operam com processos manuais. A transição para o digital pode parecer assustadora, mas o retorno sobre investimento (ROI) é inegável."
+            },
+            {
+                "type": "heading",
+                "content": "Passo a Passo Digital"
+            },
+            {
+                "type": "paragraph",
+                "content": "Ter um site otimizado para SEO local em Luanda pode atrair milhares de clientes novos todos os meses. A Synctech ajuda empresas a dar este salto com segurança."
+            },
+            {
+                "type": "image",
+                "url": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200",
+                "caption": "PMEs angolanas a conquistar o mercado digital."
+            }
+        ],
+        "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1000",
+        "tags": [
+            "Estratégia",
+            "Business",
+            "Digital",
+            "Consultoria"
+        ],
+        "seo": {
+            "title": "Transformação Digital PMEs Luanda | Consultoria Synctech",
+            "description": "Como transformar digitalmente a sua empresa em Angola. Dicas práticas de eficiência, sites profissionais e consultoria especializada Synctech.",
+            "keywords": "transformação digital angola, consultoria ti luanda, synctech, sites para empresas angola, consultoria tecnológica"
+        }
+    }
+]
