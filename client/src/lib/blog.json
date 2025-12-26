@@ -16,7 +16,7 @@
             },
             {
                 "type": "image",
-                "url": "/src/assets/black_sync_promo.png",
+                "url": "/assets/black_sync_promo.png",
                 "caption": "Black Sync: Faça alguém feliz este Natal com tecnologia de ponta."
             },
             {
@@ -29,7 +29,7 @@
             },
             {
                 "type": "image",
-                "url": "/src/assets/black_sync_plans.png",
+                "url": "/assets/black_sync_plans.png",
                 "caption": "Escolha o plano ideal para a sua empresa."
             },
             {
@@ -45,7 +45,7 @@
                 "content": "Esta promoção é válida apenas até ao dia 15 de Janeiro de 2026. Não perca a chance de transformar a sua presença digital com a Software House líder em Angola. Fale connosco agora através do +244 946 808 054."
             }
         ],
-        "image": "/src/assets/black_sync_promo.png",
+        "image": "/assets/black_sync_promo.png",
         "tags": [
             "BlackSync",
             "Promoção",
@@ -125,7 +125,7 @@
                 "content": "Em testes laboratoriais realizados na Synctech, o TabernacleORM demonstrou uma redução de 40% no overhead de serialização em comparação com ORMs tradicionais. A sua base assíncrona tira proveito total do I/O não-bloqueante, tornando-o ideal para APIs de alta carga com FastAPI."
             }
         ],
-        "image": "/src/assets/tabernacle_logo.jpg",
+        "image": "/assets/tabernacle_logo.jpg",
         "tags": [
             "Python",
             "ORM",
