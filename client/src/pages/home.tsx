@@ -12,6 +12,7 @@ import { Differentials } from "@/components/sections/Differentials";
 import { Portfolio } from "@/components/sections/Portfolio";
 import { Gallery } from "@/components/sections/Gallery";
 import { Blog } from "@/components/sections/Blog";
+import { Services } from "@/components/sections/Services";
 import { Partners } from "@/components/sections/Partners";
 import { Newsletter } from "@/components/sections/Newsletter";
 import { AIChat } from "@/components/sections/AIChat";
@@ -88,6 +89,7 @@ export default function Home({ lang, setLang }: HomeProps) {
         <Portfolio lang={lang} />
         <PromoBanner lang={lang} />
         <Blog lang={lang} />
+        <Services lang={lang} />
         <Gallery lang={lang} />
         <Partners lang={lang} />
         <Newsletter lang={lang} />

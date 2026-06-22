@@ -10,14 +10,19 @@ interface PartnersProps {
 export const Partners = ({ lang }: PartnersProps) => {
   const t = translations[lang].partners;
   const partners = [
-    "BITECH",
-    "SIIA",
+    "CODESPA.ORG",
+    "GRUPO STI INVESTIMENTS",
     "HOWZIT",
-    "360TECH",
-    "7DEV",
-    "PRAÇA DIGITAL",
-    "PAY PAY",
-    "SMS HUB"
+    "ANGOLA CABLES",
+    "YETUWARE",
+    "UTANHA LABS",
+    "PAY PAY AFRICA",
+    "SMS HUB",
+    "CLOUD2AFRICA",
+    "MAWE WEB SERVICES",
+    "PRIME PRESTIGE RH CONSULTING",
+    "REALEZA ORAL",
+
   ];
 
   return (

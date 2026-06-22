@@ -1,0 +1,64 @@
+
+[
+    {
+        "id": "angotic-2026",
+        "title": "ANGOTIC 2026: Rota da Transformação Digital",
+        "description": "Participação estratégica da Synctech no maior fórum de TIC de Angola. Apresentação de soluções de IA e Cibersegurança.",
+        "details": {
+            "date": "11-13 Junho 2026",
+            "location": "CCTA, Talatona, Luanda",
+            "focus": ["IA Generativa", "Transformação Digital", "Conectividade"],
+            "stats": "Aumento de 88% no interesse por soluções locais comparado a 2025."
+        },
+        "image": "/assets/Angotic.jpeg",
+        "category": "Eventos"
+    },
+    {
+        "id": "tabernacle-orm",
+        "title": "TabernacleORM v3.0",
+        "description": "O motor de base de dados open-source criado pela Synctech para unificar SQL e NoSQL com performance de elite.",
+        "details": {
+            "tech_stack": ["Python", "PostgreSQL", "MongoDB", "AsyncIO"],
+            "performance": "Redução de 40% no overhead de serialização.",
+            "status": "Versão 3.0 Lançada"
+        },
+        "image": "https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2000&auto=format&fit=crop",
+        "category": "Inovação"
+    },
+    {
+        "id": "black-sync-promo",
+        "title": "Campanha Black Sync",
+        "description": "Iniciativa de democratização tecnológica em Angola, oferecendo sites profissionais a preços acessíveis.",
+        "details": {
+            "impact": "Mais de 50 PMEs digitalizadas em Luanda.",
+            "plans": ["Essencial (230k KZ)", "Profissional (350k KZ)"],
+            "duration": "Válido até 15 Jan 2026"
+        },
+        "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2000&auto=format&fit=crop",
+        "category": "Promoção"
+    },
+    {
+        "id": "team-collaboration",
+        "title": "Cultura Synctech: Talentos de Luanda",
+        "description": "Nossa equipa de engenheiros e designers focados em resolver problemas locais com tecnologia global.",
+        "details": {
+            "team_size": "25+ Especialistas",
+            "values": ["Inovação", "Segurança", "Escalabilidade"],
+            "office": "Luanda, Angola"
+        },
+        "image": "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=2000&auto=format&fit=crop",
+        "category": "Equipa"
+    },
+    {
+        "id": "cybersecurity-solutions",
+        "title": "Segurança de Dados para Startups",
+        "description": "Proteção robusta contra ameaças cibernéticas, garantindo a resiliência de negócios digitais angolanos.",
+        "details": {
+            "features": ["Encryption", "Threat Detection", "24/7 Monitoring"],
+            "target": "Startups e PMEs",
+            "standard": "ISO 27001 Aligned"
+        },
+        "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2000&auto=format&fit=crop",
+        "category": "Segurança"
+    }
+]

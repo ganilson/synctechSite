@@ -53,7 +53,7 @@ export const Portfolio = ({ lang }: PortfolioProps) => {
             borderColor: "#FF7A3A",
             gradient: "linear-gradient(145deg, rgba(255, 122, 58, 0.2), #000)",
             tags: ["FastAPI", "VueJs", "Postgresql", "TabernacleORM", "asyncio"],
-            url: "https://pracadgt.com",
+            url: "https://www.pracadgt.com",
             logo: syncTechLogo
         },
         {
@@ -63,17 +63,17 @@ export const Portfolio = ({ lang }: PortfolioProps) => {
             borderColor: "#3B82F6",
             gradient: "linear-gradient(180deg, rgba(59, 130, 246, 0.2), #000)",
             tags: ["Node.js", "MongoDB", "React", "TypeScript"],
-            url: "https://syncmenu.ao",
+            url: "https://menu.synctech.ao",
             logo: syncTechLogo
         },
         {
             image: eduportalImg,
             ...t.projects[2],
-            handle: "FISARQ",
+            handle: "Camara do Comercio e Industria do Cunene",
             borderColor: "#10B981",
             gradient: "linear-gradient(165deg, rgba(16, 185, 129, 0.2), #000)",
             tags: ["Node.js", "MongoDB", "React", "TypeScript"],
-            url: "https://fisarq.com",
+            url: "https://ccaic.synctech.ao",
             logo: syncTechLogo
         },
         {

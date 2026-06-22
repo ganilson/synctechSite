@@ -30,9 +30,9 @@ export const translations: Record<Language, TranslationData> = {
                     description: "Cutting-edge real-time order management system. Eliminates delays in high-traffic restaurants through instant synchronization between kitchen, waitstaff, and customers using high-concurrency Node.js architecture."
                 },
                 {
-                    title: "FISARQ",
-                    subtitle: "Architectural Precision",
-                    description: "Sophisticated digital presence for a leading architecture and construction firm. Highlighting structural integrity and aesthetic mastery through a high-performance, robust web architecture."
+                    title: "Camara do Comercio e Industria do Cunene",
+                    subtitle: "Bussiness Controll",
+                    description: "Sophisticated digital presence for the Cunene Chamber of Commerce, designed to strengthen institutional engagement, foster business growth, and enhance regional economic connectivity. Showcasing leadership, innovation, and strategic partnerships through a secure, high-performance, and scalable digital platform."
                 },
                 {
                     title: "Talagás",
@@ -208,9 +208,9 @@ export const translations: Record<Language, TranslationData> = {
                     description: "Sistema de gestão de pedidos em tempo real de última geração. Elimina atrasos em restaurantes de alto tráfego através da sincronização instantânea entre a cozinha, os garçons e os clientes usando uma arquitetura Node.js de alta concorrência."
                 },
                 {
-                    title: "FISARQ",
-                    subtitle: "Precisão Arquitetônica",
-                    description: "Presença digital sofisticada para uma empresa líder em arquitetura e construção. Destacando integridade estrutural e maestria estética através de uma arquitetura web robusta e de alta performance."
+                    title: "CCAPIC",
+                    subtitle: "Instituição Estatál",
+                    description: "Presença digital sofisticada para a Câmara do Comércio do Cunene, concebida para fortalecer o relacionamento institucional, impulsionar o crescimento empresarial e promover a dinamização económica da região. Destacando liderança, inovação e parcerias estratégicas através de uma plataforma digital segura, robusta, escalável e de alto desempenho."
                 },
                 {
                     title: "Talagás",
